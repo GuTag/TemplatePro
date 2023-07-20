@@ -8,9 +8,9 @@ namespace PrintManager.Shared.Enums
 {
     public enum LogType
     {
-        Info = 0,
-        Warning = 1,
-        Error = 2,
-        OK=3
+        Info = 1,
+        Warning = 2,
+        Error = 3,
+        OK=4
     }
 }

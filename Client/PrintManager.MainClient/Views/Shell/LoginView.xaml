@@ -46,10 +46,11 @@
             <Grid Grid.Column="1">
 
                 <Image
-                    Margin="20,10"
+                    Margin="20,40"
+                    Height="120"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Top"
-                    Source="/PrintManager.UI;component/Resources/Images/Emerson.jpeg" />
+                    Source="/PrintManager.UI;component/Resources/Images/loginIn.png" />
                 <Button
                     Width="45"
                     Height="30"
@@ -95,6 +96,7 @@
                             pu:PasswordBoxHelper.Icon="&#xe68e;"
                             pu:PasswordBoxHelper.Password="{Binding Password, UpdateSourceTrigger=PropertyChanged}"
                             pu:PasswordBoxHelper.Watermark="输入密码"
+                            cm:Message.Attach="[Event KeyDown] = [Action onLoginButtonKeyDown($executionContext)]"
                             FontSize="15"
                             IsEnabled="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance }, Converter={StaticResource InverseBooleanConverter}}"
                             Style="{StaticResource InputPasswordBoxStyle}" />

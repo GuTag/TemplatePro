@@ -1,13 +1,16 @@
-﻿using Newtonsoft.Json;
+﻿using Caliburn.Micro;
+using Newtonsoft.Json;
 using PrintManager.MainClient.Components;
 using PrintManager.MainClient.Models;
 using PrintManager.Sql.BLL;
 using PrintManager.UI;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace PrintManager.MainClient.ViewModels.Shell
 {
@@ -37,6 +40,15 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         #region 事件与命令
 
+        public void onLoginButtonKeyDown(ActionExecutionContext context)
+        {
+            var keyArgs = context.EventArgs as KeyEventArgs;
+
+            if (keyArgs != null && keyArgs.Key == Key.Enter)
+            {
+                onLoginButton();
+            }
+        }
         public void onLoginButton()
         {
             try

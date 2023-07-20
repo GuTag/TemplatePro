@@ -1,11 +1,13 @@
 ﻿using PrintManager.Sql.BLL;
 using PrintManager.Sql.Models;
+using PrintManager.Sql.Models.BigViews;
 using SqlSugar;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.Remoting.Contexts;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
@@ -130,6 +132,7 @@ namespace PrintManager.Sql
             if (!db.DbMaintenance.IsAnyTable("User", false))
             {
                 db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<User>();
+                InitAdminUser();
             }
             if (!db.DbMaintenance.IsAnyTable("LanguageText", false))
             {
@@ -139,20 +142,50 @@ namespace PrintManager.Sql
             {
                 db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Analog>();
             }
+            if (!db.DbMaintenance.IsAnyTable("AnalogLog", false))
+            {
+                db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<AnalogLog>();
+            }
+            if (!db.DbMaintenance.IsAnyTable("EventLog", false))
+            {
+                db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<EventLog>();
+            }
+            if (!db.DbMaintenance.IsAnyTable("ParModify", false))
+            {
+                db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<ParModify>();
+            }
+
+
+
+            //BigData Views
+            if (!db.DbMaintenance.IsAnyTable("Bigview_LT", false)){ db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_LT>();}
+            if (!db.DbMaintenance.IsAnyTable("Bigview_LC", false)) { db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_LC>(); }
+            if (!db.DbMaintenance.IsAnyTable("Bigview_LB", false)) { db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_LB>(); }
+            if (!db.DbMaintenance.IsAnyTable("Bigview_RT", false)) { db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_RT>(); }
+            if (!db.DbMaintenance.IsAnyTable("Bigview_RC", false)) { db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_RC>(); }
+            if (!db.DbMaintenance.IsAnyTable("Bigview_RB", false)) { db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_RB>(); }
+            if (!db.DbMaintenance.IsAnyTable("Bigview_CB", false)) { db.CodeFirst.SetStringDefaultLength(250).BackupTable().InitTables<Bigview_CB>(); }
+
+
+
+
+
+
             return true;
         }
 
         public void InitAdminUser()
         {
-            //db.Insertable(new User() 
-            //{ 
-            //    Name = "Admin", 
-            //    UserName = "Admin", 
-            //    Password = "123456", 
-            //    IsAdmin = true, 
-            //    Gender = 1, 
-            //    Desc = "Administrator" 
-            //}).ExecuteCommand();
+            db.Insertable(new User()
+            {
+                Name = "SuperMan",
+                Role = "Administrator",
+                Level = 9,
+                Des = "This is XXXX",
+                UserName = "Admin",
+                Password = "1",
+                Icon = "None"
+            }).ExecuteCommand();
         }
 
         public bool DeleteTable(string tableName)

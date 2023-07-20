@@ -22,7 +22,7 @@ namespace PrintManager.MainClient.Components
                 settings.Title = "消息";
                 settings.ResizeMode = ResizeMode.CanResize;
                 settings.ShowInTaskBar = false;
-                settings.Background = new SolidColorBrush(Colors.Transparent);
+                //settings.Background = new SolidColorBrush(Colors.Transparent);
                 settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
                 windowManager.ShowDialog(new MessageViewModel(hintText.ToString()), null, settings);
             }));
@@ -32,7 +32,7 @@ namespace PrintManager.MainClient.Components
         public static bool? ShowAckDialog(IWindowManager windowManager, string title, string hintText)
         {
             dynamic settings = new ExpandoObject();
-            settings.Height = 200;
+            settings.Height = 300;
             settings.Width = 500;
             settings.Title = "询问"; 
             settings.ShowInTaskBar = false;
@@ -43,5 +43,9 @@ namespace PrintManager.MainClient.Components
             return windowManager.ShowDialog(new AckViewModel(title, hintText), null, settings);
         }
 
+        internal static void ShowMessageDialog(IWindowManager windowManager, string v1, string v2)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

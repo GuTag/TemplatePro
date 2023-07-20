@@ -18,6 +18,8 @@ namespace PrintManager.Shared
 
         public const string ConfigFileName = "Config.ini";
 
+        public const string ConfigTPFileName = "TimePrograms.ini";
+
         //网盘
         public const string CloudFileName = "CPQ customer code.xlsx";
 

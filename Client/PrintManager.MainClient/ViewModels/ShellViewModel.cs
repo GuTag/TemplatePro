@@ -37,6 +37,13 @@ using Opc.Ua;
 using PrintManager.Sql.Models;
 using System.Drawing.Design;
 using Opc.Ua.Client;
+using Opc.Ua.Server;
+using System.ServiceModel;
+using Microsoft.Office.Interop.Excel;
+using NPOI.SS.Formula;
+using PrintManager.Sql.BLL.BigViews;
+using PrintManager.Sql.Models.BigViews;
+using System.Diagnostics;
 
 namespace PrintManager.MainClient.ViewModels
 {
@@ -50,7 +57,10 @@ namespace PrintManager.MainClient.ViewModels
         public AnalogViewModel AnalogViewModel { get; } = new AnalogViewModel();
         public PrintViewModel PrintViewModel { get; } = new PrintViewModel();
         public ProductLogViewModel ProductLogViewModel { get; } = new ProductLogViewModel();
-
+        public EventLogViewModel EventLogViewModel { get; } = new EventLogViewModel();
+        public ServerViewModel ServerViewModel { get; } = new ServerViewModel();
+        public ParModifyViewModel ParModifyViewModel { get; } = new ParModifyViewModel();
+        public TimeProgramViewModel TimeProgramViewModel { get; } = new TimeProgramViewModel();
 
         #endregion
 
@@ -70,6 +80,15 @@ namespace PrintManager.MainClient.ViewModels
         private OpcUaClient m_OpcUaClient = new OpcUaClient();
         private List<String> MonitorAnalogNodeTags = new List<String>();
         private List<String> MonitorBoolNodeTags = new List<String>();
+
+        //bigview variable
+        private Bigview_LT  bigview_LT = new Bigview_LT();
+        private Bigview_LC bigview_LC = new Bigview_LC();
+        private Bigview_LB bigview_LB = new Bigview_LB();
+        private Bigview_RT bigview_RT = new Bigview_RT();
+        private Bigview_RC bigview_RC = new Bigview_RC();
+        private Bigview_RB bigview_RB = new Bigview_RB();
+        private Bigview_CB bigview_CB = new Bigview_CB();
         #endregion
 
         #region 构造函数
@@ -116,6 +135,8 @@ namespace PrintManager.MainClient.ViewModels
             //RequestExcelFile();
             //RequestPDFFile();
 
+            //GlobalData.Instance.IsLogin = true;
+            //GlobalData.Instance.User = new UserModel() { UserName = "Admin",Password ="1"};
 
         }
 
@@ -148,13 +169,13 @@ namespace PrintManager.MainClient.ViewModels
                             }
                             SqlSugarHelper.Instance.CreateTable();
                             LogViewModel.AddLog(LogType.Info, "系统", "数据库连接完成");
-                            IsConnectDB = true;
+                            IsConnectDB = GlobalData.IsConnectDB = true;
                         }
                         catch (Exception e)
                         {
                             LogViewModel.AddLog(LogType.Error, "系统", $"数据库连接失败:{e.Message}");
                             WindowManagerExtension.ShowMessageDialog(WindowManager, e.Message);
-                            IsConnectDB = false;
+                            IsConnectDB = GlobalData.IsConnectDB = false;
                         }
                     }
                     catch (Exception e)
@@ -163,35 +184,9 @@ namespace PrintManager.MainClient.ViewModels
                         Logger.Error(e, "程序启动错误");
                     }
                 }
-
-                //opc ua
-                var AutoConnectionClicent = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "AutoConnectClient");
-                var OPCAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "OPCAdr");
-                if (AutoConnectionClicent != null && AutoConnectionClicent.ToUpper().Equals("TRUE"))
-                {
-                    try
-                    {
-                        if (OPCAdr != null && OPCAdr.Length > 15)
-                        {
-                            m_OpcUaClient.UserIdentity = new UserIdentity(new AnonymousIdentityToken());
-                            m_OpcUaClient.ConnectServer(OPCAdr);
-                            if (m_OpcUaClient.Connected)
-                            {
-                                LogViewModel.AddLog(LogType.Info, "系统", "OPC UA 连接完成");
-                                IsConnectClient = true;
-                            }
-                        }
-                    }
-                    catch (Exception e)
-                    {
-                        LogViewModel.AddLog(LogType.Error, "系统", $"OPC UA连接错误:{e.Message}");
-                        Logger.Error(e, "OPC UA连接错误");
-                        IsConnectClient = false;
-                    }
-                }
             });
 
-            SubOPCNode();
+            //SubOPCNode();
         }
 
         #endregion
@@ -215,52 +210,411 @@ namespace PrintManager.MainClient.ViewModels
 
         public bool IsStartOPCSub { get => _isStartOPCSub; set => Set(ref _isStartOPCSub, value); }
         private bool _isStartOPCSub;
-        
+
+        public bool IsOpenServer { get => _isOpenServer; set => Set(ref _isOpenServer, value); }
+        private bool _isOpenServer;
         public string ServerIP { get => _serverIP; set => Set(ref _serverIP, value); }
         private string _serverIP;
         #endregion
 
         #region 方法
 
+        public  void ListCommand_Envent(int i)
+        {
+            if (i == 1) ConnectClient();
+            if (i == 2) SubOPCNode();
+            if (i == 3) OpenServer();
+            if (i == 4) OpenBigView();
+        }
+
+        private void OpenBigView()
+        {
+            System.Diagnostics.Process.Start("http://localhost/bigview/dist/#/index");
+            LogViewModel.AddLog(LogType.Info, "系统", $"打开看板!");
+        }
+
+        private void OpenServer()
+        {
+            if (!IsOpenServer)
+            {
+                IsOpenServer = true;
+                LogViewModel.AddLog(LogType.Info, "系统", $"服务器打开成功!");
+
+                //control cmd open server
+                //Process process_cmd = new Process();
+                //process_cmd.StartInfo.FileName = "cmd.exe";//进程打开文件名为“cmd”
+                //process_cmd.StartInfo.RedirectStandardInput = true;//是否可以输入
+                //process_cmd.StartInfo.RedirectStandardOutput = true;//是否可以输出
+                //process_cmd.StartInfo.CreateNoWindow = false;//不创建窗体 也就是隐藏窗体
+                //process_cmd.StartInfo.UseShellExecute = false;//是否使用系统shell执行，否
+                //process_cmd.Start();
+                //process_cmd.StandardInput.WriteLine("CD D:\\bigview\\server");
+                //process_cmd.StandardInput.WriteLine("D:");
+                //process_cmd.StandardInput.WriteLine("NODE INDEX");
+                //process_cmd.StandardInput.WriteLine("PAUSE");
+                Task.Run(() =>
+                {
+                    Process proc = new Process();
+                    proc.StartInfo.FileName = "\"D:\\bigview\\server\\runServer.bat\"";
+                    //proc.StartInfo.Arguments = string.Format("10");//this is argument
+                    proc.StartInfo.UseShellExecute = false;//运行时隐藏dos窗口
+                    proc.StartInfo.CreateNoWindow = false;//运行时隐藏dos窗口
+                                                         //proc.StartInfo.Verb = "runas";//设置该启动动作，会以管理员权限运行进程
+                    proc.Start();
+                    proc.WaitForExit();
+                });
+            }
+        }
+
+        private void ConnectClient()
+        {
+            //Task.Run(() =>
+            //{
+            //opc ua
+            if (IsConnectClient) return;
+                var AutoConnectionClicent = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "AutoConnectClient");
+                var OPCAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "OPCAdr");
+                if (AutoConnectionClicent != null && AutoConnectionClicent.ToUpper().Equals("TRUE") && !GlobalData.m_OpcUaClient.Connected)
+                {
+                    try
+                    {
+                        if (OPCAdr != null && OPCAdr.Length > 15 )
+                        {
+                            GlobalData.m_OpcUaClient.UserIdentity = new UserIdentity(new AnonymousIdentityToken());
+                            GlobalData.m_OpcUaClient.ConnectServer(OPCAdr);
+                            if (GlobalData.m_OpcUaClient.Connected)
+                            {
+                               LogViewModel.AddLog(LogType.Info, "系统", "OPC UA 连接完成");
+                               IsConnectClient = GlobalData.IsConnectClient = true;
+                               GlobalData.TotalConnectClient = 1;
+                            }
+                        else
+                        {
+                            LogViewModel.AddLog(LogType.Error, "系统", $"OPC UA连接错误");
+                            IsConnectClient = GlobalData.IsConnectClient = false;
+                            GlobalData.TotalConnectClient = 0;
+                        }
+                        }
+                    }
+                    catch (Exception e)
+                    {
+                        LogViewModel.AddLog(LogType.Error, "系统", $"OPC UA连接错误:{e.Message}");
+                        Logger.Error(e, "OPC UA连接错误");
+                        IsConnectClient = GlobalData.IsConnectClient = false;
+                }
+                }
+            //});
+        }
         private void SubOPCNode()
         {
+            if (IsStartOPCSub) return;
             //Analog
             var AnalogNode = AnalogBLL.GetAll();
+            var StrStart = "ns=3;s=\"";
+            var StrReplace = "\".\"";
+            var StrEnd = "\"";
+
             foreach (var item in AnalogNode)
             {
                 if (item.NodeAdr != null)
                 {
-                    MonitorAnalogNodeTags.Add(item.NodeAdr);
+                    var str = StrStart + item.NodeAdr.Replace(".", StrReplace) + StrEnd;
+                    MonitorAnalogNodeTags.Add(str);
                 }
             };
             //Console.WriteLine(MonitorAnalogNodeTags);
-
             //Bool
             var BoolNode = ProductOrderBLL.GetAll();
             foreach (var item in BoolNode)
             {
                 if (item.NodeAdr != null)
                 {
-                    MonitorBoolNodeTags.Add(item.NodeAdr);
+                    var str = StrStart + item.NodeAdr.Replace(".", StrReplace) + StrEnd;
+                    MonitorBoolNodeTags.Add(str);
                 }
             }
             //Console.WriteLine(MonitorBoolNodeTags);
 
             //Subject each node
-            m_OpcUaClient.AddSubscription("A", MonitorAnalogNodeTags.ToArray(), Multi_SubCallbackA);
-            m_OpcUaClient.AddSubscription("B", MonitorBoolNodeTags.ToArray(), Multi_SubCallbackB);
+
+
+            //if (m_OpcUaClient.Session.Subscriptions == null)
+            //{
+            GlobalData.m_OpcUaClient.AddSubscription("A", MonitorAnalogNodeTags.ToArray(), Multi_SubCallbackA);
+            GlobalData.m_OpcUaClient.AddSubscription("B", MonitorBoolNodeTags.ToArray(), Multi_SubCallbackB);
+            IsStartOPCSub = GlobalData.IsStartOPCSub = true;
+            //}
+            //foreach (var item in GlobalData.m_OpcUaClient.Session.Subscriptions)
+            //{
+            //    if (item.DisplayName == "A") IsStartOPCSub = GlobalData.IsStartOPCSub = true;
+            //}
+        }
+        private void Multi_SubCallbackA(string key, Opc.Ua.Client.MonitoredItem item, MonitoredItemNotificationEventArgs args)
+        {
+            if (key.Equals("A"))
+            {
+                MonitoredItemNotification notification = args.NotificationValue as MonitoredItemNotification;
+                string  tempResult= notification.Value.WrappedValue.Value.ToString();
+                float result = float.Parse(string.Format("{0:f1}",notification.Value.WrappedValue.Value.ToString()));
+                string startNodeId = item.StartNodeId.ToString();
+
+                Analog analog = new Analog();
+                AnalogLog   analogLog = new AnalogLog();
+                var StrStart = "ns=3;s=\"";
+                var StrReplace = "\".\"";
+                var StrEnd = "\"";
+
+                for (int i = 0; i <= MonitorAnalogNodeTags.Count(); i++)
+                {
+                    if (startNodeId.Equals(MonitorAnalogNodeTags[i]))
+                    {
+                        //Find Node All Message
+                        var str1 = MonitorAnalogNodeTags[i].Replace(StrReplace, ".").Replace(StrStart,"").Replace(StrEnd,"");
+                        analog = AnalogBLL.GetOfNodeAdr(str1);
+
+                        if (analog != null)
+                        {
+                            analogLog.ActualValve = result;
+
+                            // HH H LL L
+                            if (analog.NodeTypeView.Contains("FW"))
+                            {
+                                //Condition HH H LL L
+                                if (result > analog.NodeValHH)
+                                {
+                                    analogLog.NodeLanguageHH = analog.NodeLanguageHH;
+                                    AddNodeLog(analog, tempResult, LogType.Error);
+
+                                    Bigview_LBBLL.Add(new Bigview_LB
+                                    {
+                                        DeviceName = analog.NodeTypeView,
+                                        ActualValue = result.ToString(),
+                                        IsFault = true,
+                                        Content = LanguageTextBLL.GetOfIndex(analog.NodeLanguageHH, LanguageSet.Language_zh)
+                                    });
+                                    //break;
+                                }
+
+                                if (result > analog.NodeValH)
+                                {
+                                    analogLog.NodeLanguageH = analog.NodeLanguageH;
+                                    AddNodeLog(analog, tempResult, LogType.Warning);
+
+                                    Bigview_LBBLL.Add(new Bigview_LB
+                                    {
+                                        DeviceName = analog.NodeTypeView,
+                                        ActualValue = result.ToString(),
+                                        IsFault = false,
+                                        Content = LanguageTextBLL.GetOfIndex(analog.NodeLanguageH, LanguageSet.Language_zh)
+                                    });
+                                    //break;
+                                }
+
+                                if (result < analog.NodeValLL)
+                                {
+                                    analogLog.NodeLanguageLL = analog.NodeLanguageLL;
+                                    AddNodeLog(analog, tempResult, LogType.Error);
+
+                                    Bigview_LBBLL.Add(new Bigview_LB
+                                    {
+                                        DeviceName = analog.NodeTypeView,
+                                        ActualValue = result.ToString(),
+                                        IsFault = true,
+                                        Content = LanguageTextBLL.GetOfIndex(analog.NodeLanguageLL, LanguageSet.Language_zh)
+                                    });
+                                    //break;
+                                }
+
+                                if (result < analog.NodeValL)
+                                {
+                                    analogLog.NodeLanguageL = analog.NodeLanguageL;
+                                    AddNodeLog(analog, tempResult, LogType.Warning);
+
+                                    Bigview_LBBLL.Add(new Bigview_LB
+                                    {
+                                        DeviceName = analog.NodeTypeView,
+                                        ActualValue = result.ToString(),
+                                        IsFault = false,
+                                        Content = LanguageTextBLL.GetOfIndex(analog.NodeLanguageL, LanguageSet.Language_zh)
+                                    });
+                                    //break;
+                                }
+                            }
+
+                            //Event Log display to cisu
+                            if (analog.NodeTypeView.Contains("EV"))
+                            {
+                                if (analog.NodeTypeView.Contains("EV-LT"))
+                                {
+                                    if (analog.NodeTypeView.Equals("EV-LT-EventNbr")) bigview_LT.EventNbr = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LT-WarnNbr")) bigview_LT.WarnNbr = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LT-FaultNbr")) bigview_LT.FaultNbr = int.Parse(analogLog.ActualValve.ToString());
+                                    Bigview_LTBLL.Add(bigview_LT);
+                                    //return;
+                                }
+
+                                if (analog.NodeTypeView.Contains("EV-LC"))
+                                {
+                                    if (analog.NodeTypeView.Equals("EV-LC-CC01")) bigview_LC.CC01 = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-CC02")) bigview_LC.CC02 = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-CH01")) bigview_LC.CH01 = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-CH02")) bigview_LC.CH02 = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-ALV")) bigview_LC.ALV = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-SW01")) bigview_LC.SW01 = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-SW11")) bigview_LC.SW11 = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-LC-M002")) bigview_LC.M002 = int.Parse(analogLog.ActualValve.ToString());
+                                    Bigview_LCBLL.Add(bigview_LC);
+                                    //return;
+                                }
+
+
+                                if (analog.NodeTypeView.Contains("EV-CB"))
+                                {
+                                    bigview_CB.DeviceName = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ClientName");
+                                    if (analog.NodeTypeView.Equals("EV-CB-PlantInleTemp")) bigview_CB.PlantInleTemp = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-CB-SystemInletTemp")) bigview_CB.SystemInletTemp = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-CB-SystemOutletTemp")) bigview_CB.SystemOutletTemp = int.Parse(analogLog.ActualValve.ToString());
+                                    Bigview_CBBLL.Add(bigview_CB);
+                                    //return;
+                                }
+
+                                if (analog.NodeTypeView.Contains("EV-RT"))
+                                {
+                                    if (analog.NodeTypeView.Equals("EV-RT-TotalEnergy")) bigview_RT.TotalEnergy = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-RT-TotalAir")) bigview_RT.TotalAir = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-RT-TotalWater")) bigview_RT.TotalWater = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-RT-TotalSolvent")) bigview_RT.TotalSolvent = int.Parse(analogLog.ActualValve.ToString());
+                                    Bigview_RTBLL.Add(bigview_RT);
+                                    //return;
+                                }
+
+                                if (analog.NodeTypeView.Contains("EV-RC"))
+                                {
+                                    if (analog.NodeTypeView.Equals("EV-RC-Waster")) bigview_RC.Waster = int.Parse(analogLog.ActualValve.ToString());
+                                    if (analog.NodeTypeView.Equals("EV-RC-WasterSolvent")) bigview_RC.WasterSolvent = int.Parse(analogLog.ActualValve.ToString());
+                                    Bigview_RCBLL.Add(bigview_RC);
+                                    return;
+                                }
+                            }
+
+
+                            
+                            UpdateLogData(analog, analogLog);
+
+                            //Write EventLog 
+                            break;
+                        }
+                    }
+                }
+            }
         }
 
-        private void Multi_SubCallbackA(string arg1, MonitoredItem item, MonitoredItemNotificationEventArgs args)
+        private void Multi_SubCallbackB(string key, Opc.Ua.Client.MonitoredItem item, MonitoredItemNotificationEventArgs args)
+        {
+            if (key.Equals("B"))
+            {
+                MonitoredItemNotification notification = args.NotificationValue as MonitoredItemNotification;
+                string tempResult = notification.Value.WrappedValue.Value.ToString();
+                string result = notification.Value.WrappedValue.Value.ToString();
+                string startNodeId = item.StartNodeId.ToString();
+
+                ProductOrder product = new ProductOrder();
+                LogType log = new LogType();
+                var StrStart = "ns=3;s=\"";
+                var StrReplace = "\".\"";
+                var StrEnd = "\"";
+
+                for (int i = 0; i < MonitorBoolNodeTags.Count(); i++)
+                {
+                    if (startNodeId.Equals(MonitorBoolNodeTags[i]))
+                    {
+                        //Find Node All Message
+                        var str1 = MonitorBoolNodeTags[i].Replace(StrReplace, ".").Replace(StrStart, "").Replace(StrEnd, "");
+                        product = ProductOrderBLL.GetOfNodeAdr(str1);
+
+                        if (product != null)
+                        {
+                            //Write EventLog 
+                            if (result.Equals("True"))
+                            {
+                                if (product.NodeIndexLang.Contains("T01_E")) {
+                                    log = LogType.Info;
+                                    Bigview_RBBLL.Add(new Bigview_RB {
+                                        DeviceName = product.NodeTypeView,
+                                        ActualValue = result,
+                                        Content = LanguageTextBLL.GetOfIndex(product.NodeIndexLang, LanguageSet.Language_zh)
+                                    });
+                                }
+                                if (product.NodeIndexLang.Contains("T01_W")) { 
+                                    log = LogType.Warning;
+                                    Bigview_LBBLL.Add(new Bigview_LB
+                                    {
+                                        DeviceName = product.NodeTypeView,
+                                        ActualValue = result,
+                                        IsFault = false,
+                                        Content = LanguageTextBLL.GetOfIndex(product.NodeIndexLang, LanguageSet.Language_zh)
+                                    });
+                                }
+                                if (product.NodeIndexLang.Contains("T01_F")) { 
+                                    log = LogType.Error;
+                                    Bigview_LBBLL.Add(new Bigview_LB
+                                    {
+                                        DeviceName = product.NodeTypeView,
+                                        ActualValue = result,
+                                        IsFault = true,
+                                        Content = LanguageTextBLL.GetOfIndex(product.NodeIndexLang, LanguageSet.Language_zh)
+                                    });
+                                }
+
+                                //wirte system log
+                                EventLogViewModel.AddLog(new EventLogModel
+                                {
+                                    ClientName = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ClientName"),
+                                    NodeAdr = product.NodeAdr,
+                                    ActualValue = tempResult,
+                                    NodeTypeView = product.NodeTypeView,
+                                    LogType = log,
+                                    Message = LanguageTextBLL.GetOfIndex(product.NodeIndexLang, LanguageSet.Language_zh)
+                                });
+
+                                break;
+                            }   
+                        }
+                    }
+                }
+            }
+        }
+        private void UpdateLogData(Analog analog,AnalogLog analogLog)
         {
 
-        }
+            //Other Msg To AnalogLog
+            analogLog.ClientName = analog.ClientName;
+            analogLog.NodeAdr = analog.NodeAdr;
 
-        private void Multi_SubCallbackB(string arg1, MonitoredItem item, MonitoredItemNotificationEventArgs args)
+            analogLog.NodeDes = analog.NodeDes;
+            analogLog.NodeType = analog.NodeType;
+            analogLog.NodeTypeView = analog.NodeTypeView;
+            analogLog.NodeUnit = analog.NodeUnit;
+            analogLog.NodeValHH = analog.NodeValHH;
+            analogLog.NodeValH = analog.NodeValH;
+            analogLog.NodeValLL = analog.NodeValLL;
+            analogLog.NodeValL = analog.NodeValL;
+
+            //Write Databases
+            AnalogLogBLL.Add(analogLog);
+        }
+        private void AddNodeLog(Analog analog,string tempResult, LogType log)
         {
-
+            EventLogViewModel.AddLog(new EventLogModel
+            {
+                ClientName = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ClientName"),
+                NodeAdr = analog.NodeAdr,
+                ActualValue = tempResult,
+                NodeTypeView = analog.NodeTypeView,
+                LogType = log,
+                Message = LanguageTextBLL.GetOfIndex(analog.NodeLanguageL, LanguageSet.Language_zh)
+            });
         }
-
 
 
         /// <summary>

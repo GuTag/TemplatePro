@@ -21,13 +21,15 @@ namespace PrintManager.UI.Converters
             int type = (int)value;
             switch (type)
             {
-                case 0:
-                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
+                //case 0:
+                //    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
                 case 1:
-                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF962D"));
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));
                 case 2:
-                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF962D"));
                 case 3:
+                    return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#FF0000"));
+                case 4:
                     return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#00FF00"));
                 default:
                     return new SolidColorBrush((Color)ColorConverter.ConvertFromString("#000000"));

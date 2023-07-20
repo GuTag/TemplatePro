@@ -69,7 +69,7 @@
                     Binding="{Binding AddTime, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}', ConverterCulture=zh-CN}"
                     Header="时间" />
                 <DataGridTextColumn
-                    Width="60"
+                    Width="120"
                     Binding="{Binding Source}"
                     Header="来源" />
                 <DataGridTextColumn
@@ -77,7 +77,7 @@
                     Binding="{Binding LogType}"
                     Header="类型" />
                 <DataGridTemplateColumn
-                    Width="Auto"
+                    Width="*"
                     MinWidth="300"
                     Header="内容">
                     <DataGridTemplateColumn.CellTemplate>

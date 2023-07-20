@@ -1,4 +1,6 @@
 ﻿using Newtonsoft.Json;
+using Opc.Ua;
+using Org.BouncyCastle.Crypto.Tls;
 using PrintManager.Sql.Models;
 using SqlSugar;
 using System;
@@ -21,9 +23,18 @@ namespace PrintManager.Sql.BLL
 
         public static bool Add(Analog item)
         {
-            item.AddTime = DateTime.Now;
-            var result = SqlSugarHelper.Instance.db.Insertable(item).ExecuteCommand();
-            return result > 0;
+            var isExit = false;
+            var getItem = SqlSugarHelper.Instance.Find<Analog>((o) => o.NodeAdr == item.NodeAdr).FirstOrDefault();
+            if (getItem == null)
+            {
+                item.AddTime = DateTime.Now;
+                var result = SqlSugarHelper.Instance.db.Insertable(item).ExecuteCommand();
+            }
+            else
+            {
+                isExit = true;
+            }
+            return isExit;
         }
         public static bool AddList(string stringItems)
         {
@@ -55,9 +66,9 @@ namespace PrintManager.Sql.BLL
             return result > 0;
         }
 
-        public static bool Delete(string item)
+        public static void Delete(string NodeAdr)
         {
-            throw new NotImplementedException();
+            var result = SqlSugarHelper.Instance.db.Deleteable<Analog>((o) => o.NodeAdr == NodeAdr).ExecuteCommand();
         }
 
         public static string GetPage(int pageIndex, int pageSize, ref int totalCount, DateTime starttime, DateTime endtime, string searchText)
@@ -78,6 +89,34 @@ namespace PrintManager.Sql.BLL
         public static List<Analog> GetAll()
         {
             return SqlSugarHelper.Instance.Find<Analog>((o) => true);
+        }
+
+        public static Analog GetOfNodeAdr(string nodeAdr)
+        {
+            return SqlSugarHelper.Instance.Find<Analog>((o) => o.NodeAdr.Equals(nodeAdr)).FirstOrDefault();
+        }
+
+        public static void UpdateOfNodeAdr(Analog analog)
+        {
+            var item = SqlSugarHelper.Instance.Find<Analog>((o) => o.NodeAdr == analog.NodeAdr).FirstOrDefault();
+
+            if (item != null) {
+                //item.ClientName = analog.ClientName;
+                //item.NodeType = analog.NodeType;
+                item.NodeTypeView = analog.NodeTypeView;
+                 //item.NodeAdr = analog.NodeAdr;
+                item.NodeValHH = analog.NodeValHH;
+                item.NodeValH = analog.NodeValH;
+                item.NodeValLL = analog.NodeValLL;
+                item.NodeValL = analog.NodeValL;
+                item.NodeLanguageHH = analog.NodeLanguageHH;
+                item.NodeLanguageH = analog.NodeLanguageH;
+                item.NodeLanguageLL = analog.NodeLanguageLL;
+                item.NodeLanguageL = analog.NodeLanguageL;
+                item.NodeUnit = analog.NodeUnit;
+                 item.NodeDes = analog.NodeDes; 
+                 var result = SqlSugarHelper.Instance.db.Updateable(item).ExecuteCommand();
+            }
         }
 
     }

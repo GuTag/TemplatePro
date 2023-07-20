@@ -71,5 +71,23 @@ namespace PrintManager.Shared
             }
         }
         private static string _configFilePath;
+
+        //配置时间程序存储路径
+        public static string ConfigTPFilePath
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(_configTPFilePath))
+                {
+                    _configTPFilePath = Path.Combine(AppDataPath, Fields.ConfigTPFileName);
+                }
+                return _configTPFilePath;
+            }
+        }
+        private static string _configTPFilePath;
     }
+
+
+
+
 }

@@ -14,6 +14,8 @@ namespace PrintManager.MainClient.Components
     {
         public Action LoginStatusChanged;
         public static GlobalData Instance { private set; get; } = new GlobalData();
+
+
         public UserModel User { get => _user; set => Set(ref _user, value); }
         private UserModel _user;
 
@@ -44,7 +46,19 @@ namespace PrintManager.MainClient.Components
         }
 
         //OPC UA
+        public static OpcUaClient m_OpcUaClient = new OpcUaClient();
+        public static bool IsConnectClient;
+        public static bool IsStartOPCSub;
+        public static bool IsConnectDB;
+        public static int TotalConnectClient;
 
+        //List Item Options
+
+        public bool IsAddItem { get => _isAddItem; set { Set(ref _isAddItem, value);  } }
+        private bool _isAddItem;
+
+        public bool IsUpdateItem { get => _isUpdateItem; set { Set(ref _isUpdateItem, value); } }
+        private bool _isUpdateItem;
 
     }
 }

@@ -16,6 +16,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
 using System.Drawing.Drawing2D;
+using System.Drawing.Printing;
 using System.Dynamic;
 using System.IO;
 using System.Linq;
@@ -61,15 +62,19 @@ namespace PrintManager.MainClient.ViewModels.Shell
         public ObservableCollection<ProductOrderModel> ProductOrderList { get => _productOrderList; set => Set(ref _productOrderList, value); }
         private ObservableCollection<ProductOrderModel> _productOrderList = new ObservableCollection<ProductOrderModel>();
 
+
+
         #endregion
 
         #region 变量
         private int totalCount = 0;
+        public bool IsAdd { get; set; } = false;
+        public bool IsUpdate { get; set; } = false;
         #endregion
 
         #region 方法
         //分页查询
-        private void UpdateProductOrderList()
+        public   void UpdateProductOrderList()
         {
 
             string type = TaskUtil.GetItemNodeType(TypeComboxIndex);
@@ -86,9 +91,15 @@ namespace PrintManager.MainClient.ViewModels.Shell
                     if (language != null)
                     {
                         item.NodeDes = language.Language_zh;
-                        datalist.Add(item);
                     }
+                    else
+                    {
+                        //LanguageText languageNull = LanguageTextBLL.Find("T01_E9999");
+                        //item.NodeDes = languageNull.Language_zh;
 
+                        item.NodeDes = "未找到文本";
+                    }
+                    datalist.Add(item);
                 }
                 Application.Current.Dispatcher.Invoke(() =>
                 {
@@ -101,6 +112,23 @@ namespace PrintManager.MainClient.ViewModels.Shell
                 });
             });
         }
+
+        private void ShowParameterView(bool IsUpdate)
+        {
+            string _tag = "参数设置";
+            dynamic settings = new ExpandoObject();
+            settings.Height = 300;
+            settings.Width = 700;
+            settings.SizeToContent = SizeToContent.Manual;
+            settings.Topmost = false;
+            //settings.Owner = Application.Current.MainWindow;
+            settings.Title = _tag;
+            settings.Owner = null;
+            var window = new ParUpdateTemp1ViewModel();
+            window.ShowParView(SelectedOrder, IsUpdate);
+            WindowManager.ShowWindow(window, null, settings);
+        }
+
 
         #endregion
 
@@ -143,50 +171,18 @@ namespace PrintManager.MainClient.ViewModels.Shell
                     {
                         TaskUtil.RequestExcelData(filepath);
                         LogEventMessage($"手动导入数据源{filepath}：成功");
+                        UpdateProductOrderList();
                     }
                     catch (Exception e)
                     {
                         WindowManagerExtension.ShowMessageDialog(WindowManager, e);
                         LogEventMessage($"手动导入数据源{filepath}异常：{e.Message}");
                     }
-                });
-                
+                });         
             }
+           
         }
 
-        public void onImportPDFCommand()
-        {
-
-            //手动解析Excel，获取数据
-            var dialog = new OpenFileDialog
-            {
-                Title = "选择PDF文件",
-                Filter = "PDF文件|*.pdf;",
-
-            };
-            if ((bool)dialog.ShowDialog())
-            {
-                string filepath = dialog.FileName;
-
-                var message = $"手动导入数据源：{filepath}";
-                LogEventMessage(message);
-
-                Task.Run(() =>
-                {
-                    try
-                    {
-                        TaskUtil.RequestPDFData(filepath);
-                        LogEventMessage($"手动导入数据源{filepath}：成功");
-                    }
-                    catch (Exception e)
-                    {
-                        WindowManagerExtension.ShowMessageDialog(WindowManager, e);
-                        LogEventMessage($"手动导入数据源{filepath}异常：{e.Message}");
-                    }
-                });
-
-            }
-        }
 
         public void onInputTextSearch(ActionExecutionContext context)
         {
@@ -236,16 +232,58 @@ namespace PrintManager.MainClient.ViewModels.Shell
             //        }
             //    }
             //}
+            if (GlobalData.Instance.IsLogin)
+            {
+                IsUpdate = true;
+                if (SelectedOrder != null)
+                {
+                    string _tag = "参数修改";
+                    bool isExistWindow = false;
+                    foreach (Window w in Application.Current.Windows)
+                    {
+                        if (_tag.Equals(w.Tag?.ToString()))
+                        {
+                            w.Activate();
+                            isExistWindow = true;
+                            break;
+                        }
 
-            //dynamic settings = new ExpandoObject();
-            //settings.Height = 450;
-            //settings.Width = 800;
-            //settings.SizeToContent = SizeToContent.Manual;
-            //settings.Topmost = false;
-            ////settings.Owner = Application.Current.MainWindow;
-            //settings.Owner = null;
-            //var window = new ParUpdateTemp1ViewModel();
-            //WindowManager.ShowWindow(window, null, settings);
+                    }
+                    if (!isExistWindow)
+                    {
+                        ShowParameterView(IsUpdate);
+                    }
+                }
+            }
+            else
+            {
+                WindowManagerExtension.ShowMessageDialog(WindowManager, "请登录! ");
+            }
+        }
+
+        public void onInsertCommand()
+        {
+            IsUpdate = false;
+            ShowParameterView(IsUpdate);
+            UpdateProductOrderList();
+        }
+
+        public void onDeleteCommand()
+        {
+
+                if (SelectedOrder != null)
+                {
+                    if (WindowManagerExtension.ShowAckDialog(WindowManager, "删除确认", "是否删除该数据！") == true)
+                    {
+                        ProductOrderBLL.Delete(SelectedOrder.NodeAdr);
+                        UpdateProductOrderList();
+                    }
+                 }
+                else
+                {
+                    WindowManagerExtension.ShowMessageDialog(WindowManager, "请选择一条数据！");
+                }
+          
         }
         #endregion
     }

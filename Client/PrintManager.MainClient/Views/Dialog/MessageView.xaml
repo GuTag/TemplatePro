@@ -11,26 +11,64 @@
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
     Width="600"
     Height="200"
+
+    WindowStartupLocation="CenterScreen"
     ShowInTaskbar="False"
     mc:Ignorable="d">
+    <WindowChrome.WindowChrome>
+        <WindowChrome CaptionHeight="50" UseAeroCaptionButtons="False"></WindowChrome>
+    </WindowChrome.WindowChrome>
     <Grid>
-        <ScrollViewer
-            Grid.Row="0"
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+
+        <Grid>
+            <TextBlock Margin="20,5,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="22" Text="消息提示"/>
+        </Grid>
+        <Grid Grid.Row="1">
+            <ScrollViewer
+            Grid.Row="1"
             Margin="0"
             VerticalAlignment="Stretch"
-            Background="#f6f6f6"
+            Background="Transparent"
             BorderThickness="0"
-            VerticalScrollBarVisibility="Visible">
-            <TextBox
+            VerticalScrollBarVisibility="Auto">
+                <TextBlock
                 Padding="5,0,0,0"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Center"
+                FontSize="18"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
                 Background="Transparent"
-                BorderThickness="0"
-                FontSize="15"
-                IsReadOnly="True"
-                Text="{Binding HintText}"
-                TextWrapping="Wrap" />
-        </ScrollViewer>
+                Text="{Binding HintText}"/>
+            </ScrollViewer>
+        </Grid>
+        <Grid Grid.Row="2">
+            <Border
+            Grid.Row="2"
+            Background="#F0F0F0"
+            CornerRadius="0 0 3 3">
+                <StackPanel
+                Margin="10,5,10,10"
+                HorizontalAlignment="Right"
+                VerticalAlignment="Stretch"
+                Orientation="Horizontal">
+                <Button
+                    Width="150"
+                    Margin="5,0.5" 
+                    cm:Message.Attach="[Event Click]=[Action onCancelCommand]"
+                    Content="确认"
+                    Background="#CCD5F0"
+                    Style="{StaticResource NormalButtonStyle}" />
+            </StackPanel>
+            </Border>
+
+        </Grid>
     </Grid>
+
+  
+
+
 </Window>

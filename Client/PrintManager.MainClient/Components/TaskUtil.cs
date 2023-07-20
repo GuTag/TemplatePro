@@ -24,6 +24,9 @@ using NPOI.OpenXmlFormats.Spreadsheet;
 using Spire.Pdf;
 using System.Windows.Shell;
 using Spire.Pdf.Texts;
+using PrintManager.MainClient.Models.Extension;
+using System.Diagnostics;
+using NPOI.SS.Formula.Functions;
 
 namespace PrintManager.MainClient.Components
 {
@@ -85,7 +88,7 @@ namespace PrintManager.MainClient.Components
 
         #endregion
 
-        
+
 
         public static string GetItemNodeType(int index)
         {
@@ -94,13 +97,13 @@ namespace PrintManager.MainClient.Components
             switch (index)
             {
                 case 0:
-                    result = "T";
+                    result = "T01_E";
                     break;
                 case 1:
-                    result = "F";
+                    result = "T01_F";
                     break;
                 case 2:
-                    result = "W";
+                    result = "T01_W";
                     break;
                 default:
                     result = null;
@@ -123,16 +126,16 @@ namespace PrintManager.MainClient.Components
                     items = ProductOrderLogBLL.GetToDayAll();
                     break;
                 case "1":
-                    items= ProductOrderLogBLL.GetToLastAndDayAll();
+                    items = ProductOrderLogBLL.GetToLastAndDayAll();
                     break;
                 case "2":
-                    items=ProductOrderLogBLL.GetToLastMonthAll();
+                    items = ProductOrderLogBLL.GetToLastMonthAll();
                     break;
                 case "3":
-                    items=ProductOrderLogBLL.GetToLastWeekAll();
+                    items = ProductOrderLogBLL.GetToLastWeekAll();
                     break;
                 case "4":
-                    items= ProductOrderLogBLL.GetToAll();
+                    items = ProductOrderLogBLL.GetToAll();
                     break;
                 default:
                     break;
@@ -161,7 +164,7 @@ namespace PrintManager.MainClient.Components
         /// </summary>
         /// <param name="DT"></param>
         /// <returns></returns>
-        public static void GenerateAttachmentDataExport(List<ProductOrderLog> DT,string savePath)
+        public static void GenerateAttachmentDataExport(List<ProductOrderLog> DT, string savePath)
         {
             //需要添加 Microsoft.Office.Interop.Excel引用 
             Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
@@ -218,7 +221,7 @@ namespace PrintManager.MainClient.Components
             //写入Body
             for (int i = 0; i < listLine1.Count; i++)
             {
-                    
+
                 worksheet.Cells[rowIndex, 1] = listLine1[i].AddTime.ToString();
                 worksheet.Cells[rowIndex, 2] = listLine1[i].MO.ToString();
                 worksheet.Cells[rowIndex, 3] = listLine1[i].Line.ToString();
@@ -338,7 +341,7 @@ namespace PrintManager.MainClient.Components
             ///合并单元格之后，设置其中的文本
             range.Value = value;
             //横向居中
-            range.HorizontalAlignment = XlHAlign.xlHAlignLeft ;
+            range.HorizontalAlignment = XlHAlign.xlHAlignLeft;
             range.VerticalAlignment = XlVAlign.xlVAlignBottom;
             ///字体大小
             range.Font.Size = 11;
@@ -416,7 +419,7 @@ namespace PrintManager.MainClient.Components
         /// 解析公盘Excel数据
         /// </summary>
         /// <param name="filepath"></param>
-        public static void RequestExcelData(string filepath) 
+        public static void RequestExcelData(string filepath)
         {
             System.Data.DataTable data = ExcelUtil.ReadExcelToTable(filepath);
             List<ProductOrder> orderList = new List<ProductOrder>();
@@ -432,6 +435,33 @@ namespace PrintManager.MainClient.Components
             }
         }
 
+        public static void RequestExcelDataOfParModify(string filepath)
+        {
+            System.Data.DataTable data = ExcelUtil.ReadExcelToTable(filepath);
+            List<ParModify> orderList = new List<ParModify>();
+            if (data != null && data.Rows.Count > 0)
+            {
+                orderList.Clear();
+                foreach (DataRow row in data.Rows)
+                {
+                    var model = RowToOrderOfParModify(row);
+                    orderList.Add(model);
+                }
+                ParModifyBLL.AddList(orderList);
+            }
+        }
+
+        public static ParModify RowToOrderOfParModify(DataRow row)
+        {
+            var model = new ParModify();
+            model.Index = row["Index"].ToString();
+            model.ClientName = row["ClientName"].ToString();
+            model.NodeAdr = row["NodeAdr"].ToString();
+            model.ActualValue = row["ActualValue"].ToString();
+            model.NodeDes = row["NodeDes"].ToString();
+            model.AddTime = DateTime.Now;
+            return model;
+        }
         public static void RequestExcelLanguageTextData(string filepath)
         {
             System.Data.DataTable data = ExcelUtil.ReadExcelToTable(filepath);
@@ -474,7 +504,7 @@ namespace PrintManager.MainClient.Components
             model.NodeType = row["NodeType"].ToString();
             model.NodeTypeView = row["NodeTypeView"].ToString();
             model.NodeAdr = row["NodeAdr"].ToString();
-            model.NodeValHH =  int.Parse(row["NodeValHH"].ToString());
+            model.NodeValHH = int.Parse(row["NodeValHH"].ToString());
             model.NodeValH = int.Parse(row["NodeValH"].ToString());
             model.NodeValLL = int.Parse(row["NodeValLL"].ToString());
             model.NodeValL = int.Parse(row["NodeValL"].ToString());
@@ -576,14 +606,14 @@ namespace PrintManager.MainClient.Components
                     }
                 }
             }
-            if(moList.Count != soList.Count || moList.Count != numList.Count) 
+            if (moList.Count != soList.Count || moList.Count != numList.Count)
             {
                 throw new Exception("解析PDF数据错误，订单数量不匹配");
             }
             for (int i = 0; i < moList.Count; i++)
             {
                 var items = ProductOrderBLL.GetItemOfSO(soList[i]);
-                
+
                 if (items != null && items.Count > 0)
                 {
                     GlobalData.Instance.MOList.Add(moList[i]);
@@ -595,28 +625,291 @@ namespace PrintManager.MainClient.Components
                             isExist = true;
                         }
                     }
-                    if(!isExist)
+                    if (!isExist)
                     {
                         var newItem = new ProductOrder()
                         {
-                            MO= moList[i],
-                            SOItem= soList[i],
+                            MO = moList[i],
+                            SOItem = soList[i],
                             RequestNum = Convert.ToInt32(numList[i]),
                             ComplatedNum = 0,
                             IsOK = false,
                             ItemNo = items[0].ItemNo,
                             Desc = items[0].Desc,
-                            MtlNo= items[0].MtlNo,
-                            NewItemNO= items[0].NewItemNO,
-                            CustomerCode= items[0].CustomerCode,
-                            CPQCode= items[0].CPQCode,
-                            ProductOrderType= items[0].ProductOrderType,
+                            MtlNo = items[0].MtlNo,
+                            NewItemNO = items[0].NewItemNO,
+                            CustomerCode = items[0].CustomerCode,
+                            CPQCode = items[0].CPQCode,
+                            ProductOrderType = items[0].ProductOrderType,
                         };
                         //System.Diagnostics.Debug.WriteLine($"{newItem.MO},{newItem.SOItem}");
                         ProductOrderBLL.Add(newItem);
                     }
                 }
             }
+        }
+
+        public static string PLCNodeTransferToOPCNode(string node)
+        {
+            var StrStart = "ns=3;s=\"";
+            var StrReplace = "\".\"";
+            var StrEnd = "\"";
+            return StrStart + node.Replace(".", StrReplace) + StrEnd;
+        }
+
+
+        public static string _16ConvertTo2(string str)
+        {
+            string result = string.Empty;
+            string[] strings = new string[100];
+            int index = 0;
+            foreach (var item in str)
+            {
+                switch (item)
+                {
+                    case '0':
+                        strings[index] = "0000";
+                        break;
+                    case '1':
+                        strings[index] = "0001";
+                        break;
+                    case '2':
+                        strings[index] = "0010";
+                        break;
+                    case '3':
+                        strings[index] = "0011";
+                        break;
+                    case '4':
+                        strings[index] = "0100";
+                        break;
+                    case '5':
+                        strings[index] = "0101";
+                        break;
+                    case '6':
+                        strings[index] = "0110";
+                        break;
+                    case '7':
+                        strings[index] = "0111";
+                        break;
+                    case '8':
+                        strings[index] = "1000";
+                        break;
+                    case '9':
+                        strings[index] = "1001";
+                        break;
+                    case 'A':
+                        strings[index] = "1010";
+                        break;
+                    case 'B':
+                        strings[index] = "1011";
+                        break;
+                    case 'C':
+                        strings[index] = "1100";
+                        break;
+                    case 'D':
+                        strings[index] = "1101";
+                        break;
+                    case 'E':
+                        strings[index] = "1110";
+                        break;
+                    case 'F':
+                        strings[index] = "1111";
+                        break;
+                    default:
+                        break;
+                }
+                index++;
+            }
+
+            foreach (var item in strings)
+            {
+                if (item != string.Empty)
+                {
+                    result += item;
+                }
+            }
+
+            return result;
+        }
+        public static string _2ConvertTo16(string str)
+        {
+            string result = string.Empty;
+            string[] strings = new string[100];
+            int len = str.Length / 4;
+            for (int index = 0; index < len; index++)
+            {
+                int start = index * 4;
+                int end = 4;
+                //Console.WriteLine(str.Substring(start, end));
+                switch (str.Substring(start, end))
+                {
+                    case "0000":
+                        strings[index] = "0";
+                        break;
+                    case "0001":
+                        strings[index] = "1";
+                        break;
+                    case "0010":
+                        strings[index] = "2";
+                        break;
+                    case "0011":
+                        strings[index] = "3";
+                        break;
+                    case "0100":
+                        strings[index] = "4";
+                        break;
+                    case "0101":
+                        strings[index] = "5";
+                        break;
+                    case "0110":
+                        strings[index] = "6";
+                        break;
+                    case "0111":
+                        strings[index] = "7";
+                        break;
+                    case "1000":
+                        strings[index] = "8";
+                        break;
+                    case "1001":
+                        strings[index] = "9";
+                        break;
+                    case "1010":
+                        strings[index] = "A";
+                        break;
+                    case "1011":
+                        strings[index] = "B";
+                        break;
+                    case "1100":
+                        strings[index] = "C";
+                        break;
+                    case "1101":
+                        strings[index] = "D";
+                        break;
+                    case "1110":
+                        strings[index] = "E";
+                        break;
+                    case "1111":
+                        strings[index] = "F";
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            foreach (var item in strings)
+            {
+                if (item != string.Empty)
+                {
+                    result += item;
+                }
+            }
+
+            return result;
+        }
+        public static string BoolConvertStr(bool value)
+        {
+            string str = string.Empty;
+            if (value) str = "1";
+            else str = "0";
+            return str;
+        }
+        public static List<TimeProgramOrder> ReadOfTimeProgram()
+        {
+            int cbLen = 120;
+            int devLen = 32;
+            List<TimeProgramOrder> orders = new List<TimeProgramOrder>();
+
+
+            for (int i = 1; i <= cbLen; i++)
+            {
+                TimeProgramOrder timeProgramOrder = new TimeProgramOrder();
+                List<String> tempDevice = new List<String>();
+                List<String> tempControlWord = new List<String>();
+                string index = i.ToString();
+
+                if (IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "Title") != string.Empty)
+                {
+                    timeProgramOrder.Title = IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "Title");
+                    timeProgramOrder.Time = int.Parse(IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "Time"));
+                    timeProgramOrder.Description = IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "Description");
+
+                    for (int ii = 1; ii <= devLen; ii++)
+                    {
+                        if (IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "DeviceList" + ii) != null)
+                        {
+                            tempDevice.Add(IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "DeviceList" + ii));
+                        }
+                    }
+
+                    for (int iii = 1; iii <= cbLen; iii++)
+                    {
+                        if (IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "ControlWord" + iii) != null)
+                        {
+                            string value = _16ConvertTo2(IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index, "ControlWord" + iii));
+                            tempControlWord.Add(value);
+                        }
+                    }
+
+                    timeProgramOrder.Device = tempDevice;
+                    timeProgramOrder.ControlWord = tempControlWord;
+
+                    if (timeProgramOrder != null) orders.Add(timeProgramOrder);
+                };
+
+            }
+
+            return orders;
+        }
+
+        public static bool WriteOfTimeProgram(TimeProgramOrder order)
+        {
+           bool isOK = false;
+            int cbLen = 120;
+            int devLen = 32;
+
+            try
+            {
+                IniUtil.IniWritevalue(Environments.ConfigTPFilePath, "1", "Title", order.Title);
+                IniUtil.IniWritevalue(Environments.ConfigTPFilePath, "1", "Time", order.Time);
+                IniUtil.IniWritevalue(Environments.ConfigTPFilePath, "1", "Description", order.Description);
+
+                for (int i = 1; i <= devLen; i++)
+                {
+                    IniUtil.IniWritevalue(Environments.ConfigTPFilePath, "1", "DeviceList" + i, order.Device[i-1]);
+                }
+
+                for (int i = 1; i <= cbLen; i++)
+                {
+                    IniUtil.IniWritevalue(Environments.ConfigTPFilePath, "1", "ControlWord" + i, order.ControlWord[i-1]);
+                }
+
+                isOK = true;
+            }
+            catch (Exception)
+            {
+                isOK = false;
+                throw;
+            }
+
+
+            return isOK;
+        }
+
+
+        public static List<TimeProgramTreeParent> GetListViewItem()
+        {
+            List<TimeProgramTreeParent> orders = new List<TimeProgramTreeParent>();
+
+            for (int index = 1; index <= 120; index ++)
+            {
+                string str = IniUtil.IniReadvalue(Environments.ConfigTPFilePath, index.ToString(), "Title");
+                if (str != string.Empty) 
+                { 
+                    orders.Add(new TimeProgramTreeParent {Index = index, Content = "[" + index + "] " + str } );
+                }
+            }
+
+            return orders; 
         }
     }
 }

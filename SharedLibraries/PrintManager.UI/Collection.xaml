@@ -16,5 +16,6 @@
         <ResourceDictionary Source="/PrintManager.UI;component/Styles/ToggleButtonStyle.xaml" />
         <ResourceDictionary Source="/PrintManager.UI;component/Styles/WindowXStyle.xaml" />
         <ResourceDictionary Source="/Panuon.WPF.UI;component/Styles/GroupBoxStyle.xaml" />
+        <ResourceDictionary Source="/Panuon.WPF.UI;component/Styles/ListViewItemStyle.xaml" />
     </ResourceDictionary.MergedDictionaries>
 </ResourceDictionary>

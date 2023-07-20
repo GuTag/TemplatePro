@@ -154,6 +154,9 @@
     <Reference Include="Microsoft.Net.Http.Headers, Version=2.2.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Net.Http.Headers.2.2.0\lib\netstandard2.0\Microsoft.Net.Http.Headers.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.39\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -279,6 +282,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Styles\ListViewItemStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Styles\ComboBoxStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -391,9 +398,9 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <Resource Include="Resources\Fonts\iconfont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\Fonts\iconfont.ttf" />
     <Resource Include="Resources\Images\Emerson.jpeg" />
   </ItemGroup>
   <ItemGroup>
@@ -437,6 +444,15 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Images\WIEDLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\homeLogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\loginIn.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\null.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

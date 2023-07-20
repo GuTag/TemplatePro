@@ -14,5 +14,7 @@
     <converters:BooleanModeConverterOK x:Key="BooleanModeConverterOK" />
     <converters:BooleanModeColorConverter x:Key="BooleanModeColorConverter" />
     <converters:IntColorConverter x:Key="IntColorConverter" />
+    
+
 
 </ResourceDictionary>

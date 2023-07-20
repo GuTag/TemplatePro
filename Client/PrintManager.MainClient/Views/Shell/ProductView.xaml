@@ -1,5 +1,6 @@
 ﻿<Grid
     x:Class="PrintManager.MainClient.Views.Shell.ProductView"
+    xmlns:gobal="clr-namespace:PrintManager.MainClient.Components"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cm="http://www.caliburnproject.org"
@@ -76,18 +77,29 @@
                     Margin="10,5"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
-                    cm:Message.Attach="[Event Click]=[Action onImportExcelCommand]"
-                    pu:ButtonHelper.Icon="&#xe65f;"
-                    Content="导入Excel数据"
+                    cm:Message.Attach="[Event Click]=[Action onInsertCommand]"
+                    Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
+                    pu:ButtonHelper.Icon="&#xe603;"
+                    Content="添加数据"
                     Style="{StaticResource NormalButtonStyle}" />
                 <Button
                     Margin="10,5"
                     HorizontalAlignment="Right"
                     VerticalAlignment="Stretch"
-                    cm:Message.Attach="[Event Click]=[Action onImportPDFCommand]"
-                    pu:ButtonHelper.Icon="&#xe65f;"
-                    Content="导入PDF数据"
+                    cm:Message.Attach="[Event Click]=[Action onDeleteCommand]"
+                    Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
+                    pu:ButtonHelper.Icon="&#xe698;"
+                    Content="删除数据"
                     Style="{StaticResource NormalButtonStyle}" />
+                <Button
+                    Margin="10,5"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Stretch"
+                    cm:Message.Attach="[Event Click]=[Action onImportExcelCommand]"
+                    Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
+                    pu:ButtonHelper.Icon="&#xe65f;"
+                    Content="导入Excel数据"
+                    Style="{StaticResource NormalButtonStyle}" /> 
             </StackPanel>
 
         </Grid>

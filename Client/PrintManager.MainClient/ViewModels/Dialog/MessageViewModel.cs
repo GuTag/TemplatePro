@@ -23,10 +23,10 @@ namespace PrintManager.MainClient.ViewModels.Dialog
 
         #region 事件与命令
 
-        //public void onCloseDialog()
-        //{
-        //    TryClose();
-        //}
+        public void onCancelCommand()
+        {
+            TryClose();
+        }
         #endregion
     }
 }

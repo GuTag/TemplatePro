@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Opc.Ua;
 using PrintManager.Sql.IBLL;
 using PrintManager.Sql.Models;
 using SqlSugar;
@@ -24,10 +25,20 @@ namespace PrintManager.Sql.BLL
 
         public static bool Add(ProductOrder item)
         {
-            item.AddTime = DateTime.Now;
-            item.UpdateTime = DateTime.Now;
-            var result = SqlSugarHelper.Instance.db.Insertable(item).ExecuteCommand();
-            return result > 0;
+            var isExit = false; 
+            var getItem = SqlSugarHelper.Instance.Find<ProductOrder>((o) => o.NodeAdr == item.NodeAdr).FirstOrDefault();
+            if (getItem == null)
+            {
+                item.AddTime = DateTime.Now;
+                item.UpdateTime = DateTime.Now;
+                var result = SqlSugarHelper.Instance.db.Insertable(item).ExecuteCommand();
+            }
+            else
+            {
+                isExit = true;
+            }
+
+            return isExit;
         }
 
         //public static bool AddList(string stringItems)
@@ -66,9 +77,9 @@ namespace PrintManager.Sql.BLL
             return result > 0;
         }
 
-        public static bool Delete(string item)
+        public static void Delete(string NodeAdr)
         {
-            throw new NotImplementedException();
+            var result = SqlSugarHelper.Instance.db.Deleteable<ProductOrder>((o) => o.NodeAdr == NodeAdr).ExecuteCommand();
         }
 
         public static bool UpdateComplatedNum(string stringItem)
@@ -113,6 +124,22 @@ namespace PrintManager.Sql.BLL
         //    var data = SqlSugarHelper.Instance.Find<ProductOrder>((o) => true);
         //    return JsonConvert.SerializeObject(data);
         //}
+        public static void UpdateOfNodeAdr(ProductOrder productOrder)
+        {
+            var item = SqlSugarHelper.Instance.Find<ProductOrder>((o) => o.NodeAdr == productOrder.NodeAdr).FirstOrDefault();
+            if (item != null)
+            {
+                //item.ClientName = productOrder.ClientName;
+                //item.NodeType = productOrder.NodeType;
+                item.NodeTypeView = productOrder.NodeTypeView;
+                item.NodeIndexLang = productOrder.NodeIndexLang;
+                //item.NodeAdr = productOrder.NodeAdr;
+                item.UpdateTime = DateTime.Now;
+
+                var result = SqlSugarHelper.Instance.db.Updateable(item).ExecuteCommand();
+            }
+        }
+
         public static int GetToAll()
         {
             return SqlSugarHelper.Instance.Find<ProductOrder>((o) => true).Count;
@@ -172,9 +199,13 @@ namespace PrintManager.Sql.BLL
             var data = SqlSugarHelper.Instance.Find<ProductOrder>((o) => o.SOItem == so);
             return data;
         }
-        public static List<Analog> GetAll()
+        public static List<ProductOrder> GetAll()
         {
-            return SqlSugarHelper.Instance.Find<Analog>((o) => true);
+            return SqlSugarHelper.Instance.Find<ProductOrder>((o) => true);
+        }
+        public static ProductOrder GetOfNodeAdr(string nodeAdr)
+        {
+            return SqlSugarHelper.Instance.Find<ProductOrder>((o) => o.NodeAdr.Equals(nodeAdr)).FirstOrDefault();
         }
     }
 }

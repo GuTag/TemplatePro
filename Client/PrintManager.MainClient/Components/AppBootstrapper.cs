@@ -129,9 +129,10 @@ namespace PrintManager.MainClient.Components
                 File.Create(Environments.ConfigFilePath).Close();
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ConnectionString", "Server=localhost;Database=db_client;Trusted_Connection=True");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "LocalIPAdr", "127.0.0.1:5500");
-                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "OPCAdr", "172.22.42.141:4840");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "OPCAdr", "opc.tcp://192.168.0.1:4840");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ClientName", "PLC_1");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectDB", "TRUE");
-                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectClient", "FALSE");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectClient", "TRUE");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ServerAdr", "192.168.0.10:8080");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "RefreshTime", "1000");
             }

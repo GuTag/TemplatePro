@@ -56,8 +56,8 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         public string SearchText { get => _searchText; set => Set(ref _searchText, value); }
         private string _searchText;
-        public ProductOrderModel SelectedOrder { get => _selectedOrder; set => Set(ref _selectedOrder, value); }
-        private ProductOrderModel _selectedOrder;
+        public AnalogModel SelectedOrder { get => _selectedOrder; set => Set(ref _selectedOrder, value); }
+        private AnalogModel _selectedOrder;
         public ObservableCollection<AnalogModel> ProductOrderList { get => _productOrderList; set => Set(ref _productOrderList, value); }
         private ObservableCollection<AnalogModel> _productOrderList = new ObservableCollection<AnalogModel>();
 
@@ -65,6 +65,8 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         #region 变量
         private int totalCount = 0;
+        public bool IsAdd { get; set; } = false;
+        public bool IsUpdate { get; set; } = false;
         #endregion
 
         #region 方法
@@ -93,6 +95,22 @@ namespace PrintManager.MainClient.ViewModels.Shell
                     PageData.Totals = totalCount;
                 });
             });
+        }
+
+        private void ShowParameterView(bool IsUpdate)
+        {
+            string _tag = "参数设置";
+            dynamic settings = new ExpandoObject();
+            settings.Height = 650;
+            settings.Width = 700;
+            settings.SizeToContent = SizeToContent.Manual;
+            settings.Topmost = false;
+            //settings.Owner = Application.Current.MainWindow;
+            settings.Title = _tag;
+            settings.Owner = null;
+            var window = new ParUpdateTemp2ViewModel();
+            window.ShowParView(SelectedOrder, IsUpdate);
+            WindowManager.ShowWindow(window, null, settings);
         }
 
         #endregion
@@ -136,6 +154,7 @@ namespace PrintManager.MainClient.ViewModels.Shell
                     {
                         TaskUtil.RequestExcelAnalogTextData(filepath);
                         LogEventMessage($"手动导入数据源{filepath}：成功");
+                        UpdateProductOrderList();
                     }
                     catch (Exception e)
                     {
@@ -194,51 +213,70 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         public void onProductOrderDoubleClick()
         {
+            IsUpdate = true;
+            if (GlobalData.Instance.IsLogin) { 
+                if (SelectedOrder != null )
+                    {
+                    ShowParameterView(IsUpdate);
+                    }
+                }
+            else
+            {
+                WindowManagerExtension.ShowMessageDialog(WindowManager, "请登录! ");
+            }
+
             //if (SelectedOrder != null)
             //{
-            //    var fileList = OrderHelpers.GetPrintTemplateFilePath(SelectedOrder.ProductOrderType, SelectedOrder.ItemNo);
-            //    foreach (var filepath in fileList)
+            //    string _tag = "参数修改";
+            //    bool isExistWindow = false;
+            //    foreach (Window w in Application.Current.Windows)
             //    {
-            //        if (!File.Exists(filepath)) continue;
-            //        bool isExistWindow = false;
-            //        string _tag = Path.GetFileName(filepath) + "-" + SelectedOrder.ItemNo.ToString();
-            //        foreach (Window w in Application.Current.Windows)
+            //        if (_tag.Equals(w.Tag?.ToString()))
             //        {
-            //            if (_tag.Equals(w.Tag?.ToString()))
-            //            {
-            //                w.Activate();
-            //                isExistWindow = true;
-            //                break;
-            //            }
+            //            w.Activate();
+            //            isExistWindow = true;
+            //            break;
+            //        }
 
-            //        }
-            //        if (!isExistWindow)
-            //        {
-            //            dynamic settings = new ExpandoObject();
-            //            settings.Tag = Path.GetFileName(filepath) + "-" + SelectedOrder.ItemNo.ToString();
-            //            settings.Height = 450;
-            //            settings.Width = 800;
-            //            settings.SizeToContent = SizeToContent.Manual;
-            //            settings.Topmost = false;
-            //            settings.Title = Path.GetFileName(filepath) + " - " + SelectedOrder.ItemNo;
-            //            //settings.Owner = Application.Current.MainWindow;
-            //            settings.Owner = null;
-            //            var window = new PrintViewModel();
-            //            window.ShowPrintView(filepath, SelectedOrder);
-            //            WindowManager.ShowWindow(window, null, settings);
-            //        }
+            //    }
+            //    if (!isExistWindow)
+            //    {
+            //        dynamic settings = new ExpandoObject();
+            //        settings.Height = 300;
+            //        settings.Width = 700;
+            //        settings.SizeToContent = SizeToContent.Manual;
+            //        settings.Topmost = false;
+            //        settings.Owner = Application.Current.MainWindow;
+            //        settings.Title = _tag;
+            //        settings.Owner = null;
+            //        var window = new ParUpdateTemp2ViewModel();
+            //        window.ShowParView(SelectedOrder);
+            //        WindowManager.ShowWindow(window, null, settings);
             //    }
             //}
+        }
+        public void onInsertCommand()
+        {
+            IsUpdate = false;
+            ShowParameterView(IsUpdate);
+        }
 
-            //dynamic settings = new ExpandoObject();
-            //settings.Height = 450;
-            //settings.Width = 800;
-            //settings.SizeToContent = SizeToContent.Manual;
-            //settings.Topmost = false;
-            ////settings.Owner = Application.Current.MainWindow;
-            //settings.Owner = null;
-            //var window = new ParUpdateTemp1ViewModel();
-            //WindowManager.ShowWindow(window, null, settings);
+        public void onDeleteCommand()
+        {
+
+            if (SelectedOrder != null)
+            {
+                if (WindowManagerExtension.ShowAckDialog(WindowManager, "删除确认", "是否删除该数据！") == true)
+                {
+                    AnalogBLL.Delete(SelectedOrder.NodeAdr);
+                    UpdateProductOrderList();
+                }
+            }
+            else
+            {
+                WindowManagerExtension.ShowMessageDialog(WindowManager, "请选择一条数据！");
+            }
+
         }
         #endregion
     }

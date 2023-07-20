@@ -263,10 +263,11 @@
             </Grid>
             <ItemsControl
                 Margin="10,40,10,0"
+                FontSize="14"
                 Background="Transparent"
                 BorderThickness="0"
                 IsEnabled="False"
-                ItemsSource="{Binding ItemSouceLine}">
+                ItemsSource="{Binding ItemSouceLog}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
                         <Grid Margin="0,5">
@@ -279,14 +280,14 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Text="{Binding AddTime, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}', ConverterCulture=zh-CN}" />
-                            <TextBlock Grid.Column="1" Text="{Binding Name}" />
-                            <TextBlock Grid.Column="2" Text="{Binding IP}" />
-                            <TextBlock Grid.Column="3" Text="{Binding SubNodeNbr}" />
-                            <TextBlock Grid.Column="4" Text="{Binding WebAdr}" />
+                            <TextBlock Grid.Column="1" Text="{Binding ClientName}" />
+                            <TextBlock Grid.Column="2" Text="{Binding OPCAdr}" />
+                            <TextBlock Grid.Column="3" Text="{Binding TotalNodeNbr}" />
+                            <TextBlock Grid.Column="4" Text="{Binding IssueWebAdr}" />
                             <TextBlock
                                 Grid.Column="5"
-                                Foreground="{Binding IsOK, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanColorConverter}}"
-                                Text="{Binding IsOK, Converter={StaticResource BooleanConverterOK}}" />
+                                Foreground="{Binding IsStatus, UpdateSourceTrigger=PropertyChanged, Converter={StaticResource BooleanColorConverter}}"
+                                Text="{Binding IsStatus, Converter={StaticResource BooleanConverterOK}}" />
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

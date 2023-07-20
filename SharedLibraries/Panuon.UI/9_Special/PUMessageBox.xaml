@@ -1,0 +1,89 @@
+﻿<pu:PUWindow x:Class="Panuon.UI.PUMessageBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:pu="clr-namespace:Panuon.UI"
+             mc:Ignorable="d"
+             Title="提示"
+             MinHeight="220"
+             MinWidth="350"
+             MaxWidth="500"
+             SizeToContent="WidthAndHeight"
+             WindowStartupLocation="CenterScreen"
+             FontSize="16"
+             ResizeMode="NoResize"
+             AllowAutoCoverMask="True"
+             NavButtonVisibility="Hidden">
+    <pu:PUWindow.Icon>
+        <TextBlock Text=""
+                   FontSize="20"
+                   FontFamily="{DynamicResource IconFont}"></TextBlock>
+    </pu:PUWindow.Icon>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="10"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Label Margin="20,0"
+               HorizontalContentAlignment="Center"
+               FontSize="16"
+               VerticalContentAlignment="Center">
+            <TextBlock x:Name="txtContent"
+                       TextWrapping="Wrap"
+                       Text="" />
+        </Label>
+        <Grid x:Name="grdAwait">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="1.4*" />
+            </Grid.ColumnDefinitions>
+            <pu:PULoading x:Name="loading"
+                          Width="40"
+                          Height="40"
+                          HorizontalAlignment="Right"
+                          Margin="0,0,15,0" />
+            <Grid Grid.Column="1">
+                <TextBlock Margin="10,0"
+                           VerticalAlignment="Center"
+                           x:Name="txtAwait"
+                           TextWrapping="Wrap"
+                           Text="" />
+            </Grid>
+
+        </Grid>
+        <Grid Grid.Row="1"
+              x:Name="groupTip">
+            <pu:PUButton x:Name="btnOK" 
+                         Margin="30,0,30,0"
+                         Height="35"
+                         Content="好"
+                         Click="PUButton_Click"></pu:PUButton>
+        </Grid>
+        <Grid Grid.Row="1"
+              x:Name="groupConfirm"
+              Visibility="Collapsed">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <pu:PUButton x:Name="BtnYes"
+                         Margin="20,0,10,0"
+                         Height="35"
+                         Content="是"
+                         Click="PUButtonYes_Click"></pu:PUButton>
+            <pu:PUButton x:Name="BtnNo"
+                         Margin="10,0,20,0"
+                         Height="35"
+                         Grid.Column="1"
+                         ButtonStyle="Outline"
+                         Foreground="DimGray"
+                         BorderBrush="DimGray"
+                         CoverBrush="DimGray"
+                         Content="取消"
+                         Click="PUButtonNo_Click"></pu:PUButton>
+        </Grid>
+    </Grid>
+</pu:PUWindow>

@@ -7,39 +7,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PrintManager.MainClient.Models;
+using PrintManager.UI.Controls;
+using PrintManager.Sql.BLL;
+using PrintManager.Sql.Models;
+using System.Windows;
+using Spire.Pdf.Exporting.XPS.Schema.Mc;
 
 namespace PrintManager.MainClient.ViewModels.Shell
 {
     public class ParUpdateTemp1ViewModel : ViewModelBase
     {
         public ParUpdateTemp1ViewModel()
-        {
-       
+        {           
         }
 
         #region 属性
-        public string ConfigSQLStr { get => _configSQLStr; set => Set(ref _configSQLStr, value); }
-        private string _configSQLStr;
-        public string ConfigIPAdr { get => _configIPAdr; set => Set(ref _configIPAdr, value); }
-        private string _configIPAdr;
-        public string ConfigClent1 { get => _configClent1; set => Set(ref _configClent1, value); }
-        private string _configClent1;
-        public string ConfigClent2 { get => _configClent2; set => Set(ref _configClent2, value); }
-        private string _configClent2;
-        public string ConfigClent3 { get => _configClent3; set => Set(ref _configClent3, value); }
-        private string _configClent3;
+        public string ClientName { get => _clientName; set => Set(ref _clientName, value); }
+        private string _clientName;
+        public string NodeType { get => _nodeType; set => Set(ref _nodeType, value); }
+        private string _nodeType;
+        public string NodeTypeView { get => _nodeTypeView; set => Set(ref _nodeTypeView, value); }
+        private string _nodeTypeView;
+        public string NodeIndexLang { get => _nodeIndexLang; set => Set(ref _nodeIndexLang, value); }
+        private string _nodeIndexLang;
+        public string NodeAdr { get => _nodeAdr; set => Set(ref _nodeAdr, value); }
+        private string _nodeAdr;
 
-        public string SerialPort { get => _serialPort; set => Set(ref _serialPort, value); }
-        private string _serialPort;
+        public bool IsUpdateItem { get => _isUpdateItem; set => Set(ref _isUpdateItem, value); }
+        private bool _isUpdateItem;
+        public bool IsAddeItem { get => _isAddItem; set => Set(ref _isAddItem, value); }
+        private bool _isAddItem;
 
-        public string ChartReferTime { get => _chartReferTime; set => Set(ref _chartReferTime, value); }
-        private string _chartReferTime;
-
-        public string ChartDataRange { get => _chartDataRange; set => Set(ref _chartDataRange, value); }
-        private string _chartDataRange;
-
-        public string ChartExcelSavePath { get => _chartExcelSavePath; set => Set(ref _chartExcelSavePath, value); }
-        private string _chartExcelSavePath;
         #endregion
 
         #region 变量
@@ -48,15 +47,31 @@ namespace PrintManager.MainClient.ViewModels.Shell
         #region 方法
         private void WriteConfig()
         {
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ConnectionString", ConfigSQLStr);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "IP", ConfigIPAdr);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "SerialPort", SerialPort);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "ClientIP", "1", ConfigClent1);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "ClientIP", "2", ConfigClent2);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "ClientIP", "3", ConfigClent3);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Chart", "ChartReferTime", ChartReferTime);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Chart", "ChartDataRange", ChartDataRange);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Chart", "ChartExcelSavePath", ChartExcelSavePath);
+            ProductOrder productOrder = new ProductOrder()
+            {
+                ClientName = ClientName,
+                NodeType = NodeType,
+                NodeIndexLang = NodeIndexLang,
+                NodeAdr = NodeAdr,
+                NodeTypeView = NodeTypeView,
+            };
+            ProductOrderBLL.UpdateOfNodeAdr(productOrder);
+        }
+
+
+        public void ShowParView(ProductOrderModel orderModel , bool UpdateItem)
+        {
+            if (orderModel != null)
+            {
+                ClientName = orderModel.ClientName;
+                NodeType = orderModel.NodeType;
+                NodeTypeView = orderModel.NodeTypeView;
+                NodeIndexLang = orderModel.NodeIndexLang;
+                NodeAdr = orderModel.NodeAdr;
+            } 
+            IsUpdateItem = UpdateItem;
+            IsAddeItem = !UpdateItem;
+
         }
         #endregion
 
@@ -65,74 +80,49 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         #region 命令
 
-        public void onSaveConfigCommand()
+        public void onUpdateCommand()
         {
             WriteConfig();
-            TryClose(true);
+            TryClose() ;
+            ProductViewModel productViewModel = new ProductViewModel();
+            productViewModel.UpdateProductOrderList();
         }
 
-
-        public void onInitConfigCommand()
+        public void onAddCommand()
         {
-            if (WindowManagerExtension.ShowAckDialog(WindowManager, "恢复默认参数确认", "是否恢复默认参数配置") == true)
+
+            var isExit = ProductOrderBLL.Add(new ProductOrder() 
             {
-                //default paras
-                //ConfigSQLStr = "Server=localhost;Database=db_printmanager;Trusted_Connection=True";
-                //ConfigIPAdr = "0.0.0.0:5500";
-                //ConfigClent1 = "192.168.0.101";
-                //ConfigClent2 = "192.168.0.102";
-                //ConfigClent3 = "192.168.0.103";
-                //SerialPort = "COM3";
-                //ChartReferTime = "0";
-                //ChartDataRange = "0";
-                //ChartExcelSavePath = "C:\\";
-                //WriteConfig();
+                ClientName = ClientName,
+                NodeType = NodeType,
+                NodeIndexLang = NodeIndexLang,
+                NodeAdr = NodeAdr,
+                NodeTypeView = NodeTypeView,
+            });
+
+            if (isExit)
+            {
+                WindowManagerExtension.ShowMessageDialog(WindowManager,"已存在相同地址:" + NodeAdr );
+            }
+            else
+            {
+                TryClose();
+                //productViewModel.UpdateProductOrderList();
             }
         }
-
         public void onCancelCommand()
         {
-            TryClose(false);
+            TryClose();
         }
-
         #endregion
 
         #region 重写方法
         public override void CanClose(Action<bool> callback)
         {
-            if (IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ConnectionString") == ConfigSQLStr &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "IP") == ConfigIPAdr &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "1") == ConfigClent1 &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "2") == ConfigClent2 &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "3") == ConfigClent3 &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartReferTime") == ChartReferTime &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartDataRange") == ChartDataRange &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartExcelSavePath") == ChartExcelSavePath
-                )
-            {
 
-                base.CanClose(callback);
-
-            }
-            else
-            {
-                if (WindowManagerExtension.ShowAckDialog(WindowManager, "关闭窗口", "是否保存配置?") == true)
-                {
-                    try
-                    {
-                        WriteConfig();
-                        base.CanClose(callback);
-                    }
-                    catch (Exception)
-                    {
-                    }
-                }
-                else
-                {
-                    base.CanClose(callback);
-                }
-            }
+            base.CanClose(callback);
+            #endregion
         }
-        #endregion
+
     }
 }

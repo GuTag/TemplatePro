@@ -22,6 +22,7 @@ using System.Collections.ObjectModel;
 using System.Drawing.Drawing2D;
 using System.Dynamic;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -64,8 +65,8 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         public ObservableCollection<ChartLogModel> ItemSouceLine { get => _itemSouceLine; set => Set(ref _itemSouceLine, value); }
         private ObservableCollection<ChartLogModel> _itemSouceLine = new ObservableCollection<ChartLogModel>();
-        public ObservableCollection<ProductOrderLog> ItemSouceLog { get => _itemSouceLog; set => Set(ref _itemSouceLog, value); }
-        private ObservableCollection<ProductOrderLog> _itemSouceLog = new ObservableCollection<ProductOrderLog>();
+        public ObservableCollection<OnlineDevItemLog> ItemSouceLog { get => _itemSouceLog; set => Set(ref _itemSouceLog, value); }
+        private ObservableCollection<OnlineDevItemLog> _itemSouceLog = new ObservableCollection<OnlineDevItemLog>();
 
         
         #endregion
@@ -200,11 +201,21 @@ namespace PrintManager.MainClient.ViewModels.Shell
                     }));
 
                     //生产记录操作
-                    //var ProdData = ProductOrderLogBLL.GetToDayAll();
-                    //Application.Current.Dispatcher.BeginInvoke(new System.Action(() =>
-                    //{
-                    //    ItemSouceLog = new ObservableCollection<ProductOrderLog>(ProdData);
-                    //}));
+                    Application.Current.Dispatcher.BeginInvoke(new System.Action(() =>
+                    {
+                        if (GlobalData.m_OpcUaClient.Connected)
+                        {
+                            ItemSouceLog.Clear();
+                            ItemSouceLog.Add(new OnlineDevItemLog()
+                            {
+                                ClientName = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ClientName"),
+                                TotalNodeNbr = TotalAnalogNbr + TotalBoolNbr,
+                                IsStatus = GlobalData.m_OpcUaClient.Connected,
+                                OPCAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "OPCAdr"),
+                                IssueWebAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ServerAdr"),
+                            });
+                        }
+                    }));
                 }
                 catch (Exception e)
                 {
@@ -270,9 +281,6 @@ namespace PrintManager.MainClient.ViewModels.Shell
         public void UpdateTopLine()
         {
 
-            //Online client
-            TotalOnlineClient = 0;
-
             //Bool Nbr
             TotalBoolNbr = ProductOrderBLL.GetToAll();
 
@@ -281,6 +289,9 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
             //Language Nbr
             TotalLanguageNbr = LanguageTextBLL.GetToAll();
+
+            //Online client
+            TotalOnlineClient = GlobalData.TotalConnectClient;
 
         }
         #endregion

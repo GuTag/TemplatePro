@@ -23,7 +23,7 @@
     <Window.Resources>
         <ResourceDictionary />
     </Window.Resources>
-    <!--<pu:WindowXCaption.HeaderTemplate>
+    <pu:WindowXCaption.HeaderTemplate>
         <DataTemplate>
             <Grid>
                 <Border Background="{DynamicResource WindowTitleBackground}" />
@@ -61,21 +61,14 @@
                             VerticalAlignment="Stretch"
                             cm:Message.Attach="[Event Click]=[Action ProductOK_Envent(1)]"
                             pu:ButtonHelper.Icon="&#xe658;"
-                            Content="一线产品合格"
+                            Content="连接客户端"
                             Style="{StaticResource NormalButtonStyle}" />
                         <Button
                             HorizontalAlignment="Right"
                             VerticalAlignment="Stretch"
                             cm:Message.Attach="[Event Click]=[Action ProductOK_Envent(2)]"
                             pu:ButtonHelper.Icon="&#xe658;"
-                            Content="二线产品合格"
-                            Style="{StaticResource NormalButtonStyle}" />
-                        <Button
-                            HorizontalAlignment="Right"
-                            VerticalAlignment="Stretch"
-                            cm:Message.Attach="[Event Click]=[Action ProductOK_Envent(3)]"
-                            pu:ButtonHelper.Icon="&#xe658;"
-                            Content="三线产品合格"
+                            Content="订阅节点"
                             Style="{StaticResource NormalButtonStyle}" />
                         <Button
                             Width="40"
@@ -106,7 +99,7 @@
                 </Grid>
             </Grid>
         </DataTemplate>
-    </pu:WindowXCaption.HeaderTemplate>-->
+    </pu:WindowXCaption.HeaderTemplate>
     <Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -127,7 +120,7 @@
                         <RowDefinition Height="40" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition />
-                        <RowDefinition Height="120" />
+                        <RowDefinition Height="140" />
                     </Grid.RowDefinitions>
                     <Grid
                         Grid.Row="0"
@@ -136,7 +129,7 @@
                         <Image
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
-                            Source="/PrintManager.UI;component/Resources/Images/Emerson.jpeg" />
+                            Source="/PrintManager.UI;component/Resources/Images/homeLogo.png" />
                     </Grid>
                     <Grid Grid.Row="1" Background="Transparent">
                         <Border
@@ -151,8 +144,14 @@
                             <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe873;" Content="首页" />
                             <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="离散量" />
                             <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="模拟量" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="文本配置" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe620;" Content="日志记录" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="参数修改" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="时间程序" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe620;" Content="文本配置" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="后端配置"
+                                         Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                                         />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe630;" Content="订阅日志" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe630;" Content="系统日志" />
                         </ListBox>
                     </Grid>
                     <Grid Grid.Row="4" Background="Transparent" />
@@ -162,6 +161,7 @@
                             <RowDefinition />
                             <RowDefinition />
                              <RowDefinition />
+                            <RowDefinition />
                         </Grid.RowDefinitions>
                         <Grid>
                             <StackPanel
@@ -241,6 +241,28 @@
                                 </Grid>
                             </StackPanel>
                         </Grid>
+                        <Grid Grid.Row="4">
+                            <StackPanel
+                                Margin="20,0"
+                                VerticalAlignment="Center"
+                                Orientation="Horizontal">
+                                <TextBlock
+                                    Width="130"
+                                    FontSize="17"
+                                    Text="服务器状态:" />
+                                <Grid>
+                                    <Ellipse
+                                        Width="20"
+                                        Height="20"
+                                        Fill="LightGray" />
+                                    <Ellipse
+                                        Width="20"
+                                        Height="20"
+                                        Fill="LightGreen"
+                                        Visibility="{Binding IsOpenServer, Converter={StaticResource BooleanToVisibilityConverter}}" />
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
                         <UniformGrid
                             Grid.Row="2"
                             Columns="2"
@@ -266,6 +288,47 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Top"
                         Orientation="Horizontal">
+                        <Button
+                            Width="40"
+                            cm:Message.Attach="[Event Click]=[Action ListCommand_Envent(1)]"
+                            pu:ButtonHelper.HoverBackground="#FFFFFF"
+                            Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                            Content="&#xe61c;"
+                            FontSize="13"
+                            Foreground="#555"
+                            Style="{StaticResource IconButtonStyle}"
+                            ToolTip="连接客户端" />
+                        <Button
+                            Width="40"
+                            IsEnabled="{Binding IsConnectClient }"
+                            cm:Message.Attach="[Event Click]=[Action ListCommand_Envent(2)]"
+                            pu:ButtonHelper.HoverBackground="#FFFFFF"
+                            Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                            Content="&#xe624;"
+                            FontSize="13"
+                            Foreground="#555"
+                            Style="{StaticResource IconButtonStyle}"
+                            ToolTip="订阅节点" />
+                        <Button
+                            Width="40"
+                            Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                            cm:Message.Attach="[Event Click]=[Action ListCommand_Envent(3)]"
+                            pu:ButtonHelper.HoverBackground="#FFFFFF"
+                            Content="&#xe63b;"
+                            FontSize="13"
+                            Foreground="#555"
+                            Style="{StaticResource IconButtonStyle}"
+                            ToolTip="开启服务器" />
+                        <Button
+                            Width="40"
+                            Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" 
+                            IsEnabled="{Binding IsOpenServer }"
+                            cm:Message.Attach="[Event Click]=[Action ListCommand_Envent(4)]"
+                            Content="&#xe60f;"
+                            FontSize="13"
+                            Foreground="#555"
+                            Style="{StaticResource IconButtonStyle}"
+                            ToolTip="打开看板" />
                         <Button
                             Width="40"
                             cm:Message.Attach="[Event Click]=[Action UserLoginCommand]"
@@ -336,7 +399,11 @@
                     <ContentControl x:Name="HomeViewModel" />
                     <ContentControl x:Name="ProductViewModel" />
                     <ContentControl x:Name="AnalogViewModel" />
+                    <ContentControl x:Name="ParModifyViewModel" />
+                    <ContentControl x:Name="TimeProgramViewModel" />
                     <ContentControl x:Name="LanguageViewModel" />
+                    <ContentControl x:Name="ServerViewModel" />
+                    <ContentControl x:Name="EventLogViewModel" />
                     <ContentControl x:Name="LogViewModel" />
                 </pu:CarouselPanel>
             </Grid>

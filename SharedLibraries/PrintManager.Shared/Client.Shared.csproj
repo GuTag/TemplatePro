@@ -299,6 +299,7 @@
     <Compile Include="Enums\LogType.cs" />
     <Compile Include="Enums\OrderType.cs" />
     <Compile Include="Enums\ControlType.cs" />
+    <Compile Include="Helpers\AppConfigHelper.cs" />
     <Compile Include="Helpers\CopyHeplers.cs" />
     <Compile Include="Helpers\ImageHelpers.cs" />
     <Compile Include="Helpers\OrderHelpers.cs" />

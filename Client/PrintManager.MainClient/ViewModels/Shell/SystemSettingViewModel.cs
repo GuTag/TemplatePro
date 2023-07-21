@@ -14,57 +14,96 @@ namespace PrintManager.MainClient.ViewModels.Shell
     {
         public SystemSettingViewModel()
         {
-            ConfigSQLStr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ConnectionString");
-            ConfigIPAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "IP");
-            ConfigClent1 = IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "1");
-            ConfigClent2 = IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "2");
-            ConfigClent3 = IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "3");
-            SerialPort = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "SerialPort");
-            ChartReferTime = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartReferTime");
-            ChartDataRange = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartDataRange");
-            ChartExcelSavePath = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartExcelSavePath");
+
+            ReadConfig();
         }
 
         #region 属性
-        public string ConfigSQLStr { get => _configSQLStr; set => Set(ref _configSQLStr, value); }
-        private string _configSQLStr;
-        public string ConfigIPAdr { get => _configIPAdr; set => Set(ref _configIPAdr, value); }
-        private string _configIPAdr;
-        public string ConfigClent1 { get => _configClent1; set => Set(ref _configClent1, value); }
-        private string _configClent1;
-        public string ConfigClent2 { get => _configClent2; set => Set(ref _configClent2, value); }
-        private string _configClent2;
-        public string ConfigClent3 { get => _configClent3; set => Set(ref _configClent3, value); }
-        private string _configClent3;
+        public string ConnectionString { get => _connectionString; set => Set(ref _connectionString, value); }
+        private string _connectionString;
+        public string LoadlIPAdr { get => _loadlIPAdr; set => Set(ref _loadlIPAdr, value); }
+        private string _loadlIPAdr;
+        public bool AutoConnectDB { get => _autoConnectDB; set => Set(ref _autoConnectDB, value); }
+        private bool _autoConnectDB;
+        public string ActualLanguage { get => _actualLanguage; set => Set(ref _actualLanguage, value); }
+        private string _actualLanguage;
+        public string ClientName { get => _clientName; set => Set(ref _clientName, value); }
+        private string _clientName;
 
-        public string SerialPort { get => _serialPort; set => Set(ref _serialPort, value); }
-        private string _serialPort;
+        public string OPCAdr { get => _oPCAdr; set => Set(ref _oPCAdr, value); }
+        private string _oPCAdr;
 
-        public string ChartReferTime { get => _chartReferTime; set => Set(ref _chartReferTime, value); }
-        private string _chartReferTime;
+        public bool AutoConnectClient { get => _autoConnectClient; set => Set(ref _autoConnectClient, value); }
+        private bool _autoConnectClient;
 
-        public string ChartDataRange { get => _chartDataRange; set => Set(ref _chartDataRange, value); }
-        private string _chartDataRange;
+        public string ServerAdr { get => _serverAdr; set => Set(ref _serverAdr, value); }
+        private string _serverAdr;
 
-        public string ChartExcelSavePath { get => _chartExcelSavePath; set => Set(ref _chartExcelSavePath, value); }
-        private string _chartExcelSavePath;
+        public string RefreshTime { get => _refreshTime; set => Set(ref _refreshTime, value); }
+        private string _refreshTime;
         #endregion
 
         #region 变量
         #endregion
 
         #region 方法
+
+        public bool StringToBool(string str)
+        {
+            bool temp = false;
+            if (str == null) return false;
+
+            if (str.Equals("TRUE"))
+            {
+                temp = true;
+            }
+            else
+            {
+                temp = false;
+            }
+
+            return temp;
+        }
+        public string BoolToString(bool b)
+        {
+            string str = string.Empty;
+            if (b)
+            {
+                str = "TRUE";
+            }
+            else
+            {
+                str = "FALSE";
+            }
+
+            return str;
+        }
+
+        public void ReadConfig()
+        {
+            ConnectionString = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ConnectionString");
+            LoadlIPAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "LocalIPAdr");
+            //ActualLanguage = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ActualLanguage");
+            ClientName = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ClientName");
+            OPCAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "OPCAdr");
+            ServerAdr = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ServerAdr");
+            RefreshTime = IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "RefreshTime");
+
+            AutoConnectDB = StringToBool(IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "AutoConnectDB"));
+            AutoConnectClient = StringToBool(IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "AutoConnectClient"));
+        }
         private void WriteConfig()
         {
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ConnectionString", ConfigSQLStr);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "IP", ConfigIPAdr);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "SerialPort", SerialPort);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "ClientIP", "1", ConfigClent1);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "ClientIP", "2", ConfigClent2);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "ClientIP", "3", ConfigClent3);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Chart", "ChartReferTime", ChartReferTime);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Chart", "ChartDataRange", ChartDataRange);
-            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Chart", "ChartExcelSavePath", ChartExcelSavePath);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ConnectionString", ConnectionString);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "LocalIPAdr", LoadlIPAdr);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectDB", BoolToString(AutoConnectDB));
+            //IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ActualLanguage", ActualLanguage);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ClientName", ClientName);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "OPCAdr", OPCAdr);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectClient", BoolToString( AutoConnectClient));
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ServerAdr", ServerAdr);
+            IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "RefreshTime", RefreshTime);
+
         }
         #endregion
 
@@ -72,6 +111,16 @@ namespace PrintManager.MainClient.ViewModels.Shell
         #endregion
 
         #region 命令
+
+        public void onChangeLanguageToZh()
+        {
+
+        }
+
+        public void onChangeLanguageToCn()
+        {
+
+        }
 
         public void onSaveConfigCommand()
         {
@@ -85,16 +134,17 @@ namespace PrintManager.MainClient.ViewModels.Shell
             if (WindowManagerExtension.ShowAckDialog(WindowManager, "恢复默认参数确认", "是否恢复默认参数配置") == true)
             {
                 //default paras
-                ConfigSQLStr = "Server=localhost;Database=db_printmanager;Trusted_Connection=True";
-                ConfigIPAdr = "0.0.0.0:5500";
-                ConfigClent1 = "192.168.0.101";
-                ConfigClent2 = "192.168.0.102";
-                ConfigClent3 = "192.168.0.103";
-                SerialPort = "COM3";
-                ChartReferTime = "0";
-                ChartDataRange = "0";
-                ChartExcelSavePath = "C:\\";
-                WriteConfig();
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ConnectionString", "Server=localhost;Database=db_client;Trusted_Connection=True");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "LocalIPAdr", "127.0.0.1:5500");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "OPCAdr", "opc.tcp://192.168.0.1:4840");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ClientName", "PLC_1");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectDB", "TRUE");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectClient", "TRUE");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ServerAdr", "192.168.0.10:8080");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "RefreshTime", "1000");
+                //IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ActualLanguage", "中文");
+
+                ReadConfig();
             }
         }
 
@@ -108,14 +158,15 @@ namespace PrintManager.MainClient.ViewModels.Shell
         #region 重写方法
         public override void CanClose(Action<bool> callback)
         {
-            if (IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ConnectionString") == ConfigSQLStr &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "IP") == ConfigIPAdr &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "1") == ConfigClent1 &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "2") == ConfigClent2 &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "ClientIP", "3") == ConfigClent3 &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartReferTime") == ChartReferTime &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartDataRange") == ChartDataRange &
-                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Chart", "ChartExcelSavePath") == ChartExcelSavePath
+            if (IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ConnectionString") == ConnectionString &
+                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "LocalIPAdr") == LoadlIPAdr &
+               StringToBool( IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "AutoConnectDB")) == AutoConnectDB &
+                //IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ActualLanguage") == ActualLanguage &
+                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ClientName") == ClientName &
+                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "OPCAdr") == OPCAdr &
+                StringToBool(IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "AutoConnectClient")) == AutoConnectClient &
+                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "ServerAdr") == ServerAdr &
+                IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "RefreshTime") == RefreshTime
                 )
             {
 

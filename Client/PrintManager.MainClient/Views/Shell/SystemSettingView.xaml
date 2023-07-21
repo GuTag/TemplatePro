@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:PrintManager.MainClient.Views.Shell"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     Width="700"
     Height="Auto"
     mc:Ignorable="d">
@@ -18,7 +19,8 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="auto" />
-                <RowDefinition />
+                <RowDefinition Height="auto"/>
+                <RowDefinition Height="auto"/>
             </Grid.RowDefinitions>
             <Grid Margin="5">
                 <Grid.RowDefinitions>
@@ -33,7 +35,7 @@
                     Margin="5"
                     FontSize="25"
                     FontWeight="Bold"
-                    Text="系统配置" />
+                    Text="{x:Static lang:Resources.SystemSettingView_TextBlock_01}" />
                 <StackPanel
                     Grid.Row="1"
                     Margin="5"
@@ -41,14 +43,14 @@
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
                     <TextBlock
-                        Width="100"
+                        Width="120"
                         VerticalAlignment="Center"
-                        Text="数据库连接字符串" />
+                        Text="{x:Static lang:Resources.SystemSettingView_TextBlock_02}" />
                     <TextBox
                         MinWidth="500"
                         Margin="10,0.5"
                         Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding ConfigSQLStr, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding ConnectionString, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel
                     Grid.Row="2"
@@ -59,12 +61,12 @@
                     <TextBlock
                         Width="100"
                         VerticalAlignment="Center"
-                        Text="本机IP地址" />
+                        Text="{x:Static lang:Resources.SystemSettingView_TextBlock_03}" />
                     <TextBox
                         Width="200"
                         Margin="10,0.5"
                         Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding ConfigIPAdr, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding LoadlIPAdr, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel
                     Grid.Row="3"
@@ -73,15 +75,30 @@
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
                     <TextBlock
+                        Width="120"
+                        VerticalAlignment="Center"
+                        Text="{x:Static lang:Resources.SystemSettingView_TextBlock_04}" />
+                    <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,0,5" IsChecked="{Binding AutoConnectDB, UpdateSourceTrigger=PropertyChanged}"/>
+                </StackPanel>
+                <!--<StackPanel
+                    Grid.Row="4"
+                    Margin="5"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Orientation="Horizontal">
+                    <TextBlock
                         Width="100"
                         VerticalAlignment="Center"
-                        Text="监听串口" />
-                    <TextBox
-                        Width="200"
+                        Text="系统语言" />
+                    <ComboBox
+                        MinWidth="150"
                         Margin="10,0.5"
-                        Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding SerialPort, UpdateSourceTrigger=PropertyChanged}" />
-                </StackPanel>
+                        SelectedIndex="{Binding ActualLanguage, UpdateSourceTrigger=PropertyChanged}"
+                        Style="{StaticResource InputComboxStyle}">
+                        <ComboBoxItem Content="中文" />
+                        <ComboBoxItem Content="英文" />
+                    </ComboBox>
+                </StackPanel>-->
             </Grid>
 
             <Grid Grid.Row="1" Margin="5">
@@ -95,19 +112,19 @@
                     Margin="5"
                     FontSize="25"
                     FontWeight="Bold"
-                    Text="客户端配置" />
+                    Text="{x:Static lang:Resources.SystemSettingView_TextBlock_05}" />
                 <StackPanel
                     Grid.Row="1"
                     Margin="5"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="客户端1" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.SystemSettingView_TextBlock_06}" />
                     <TextBox
                         Width="200"
                         Margin="10,0"
                         Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding ConfigClent1, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding ClientName, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel
                     Grid.Row="2"
@@ -115,12 +132,12 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="客户端2" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.SystemSettingView_TextBlock_07}" />
                     <TextBox
                         Width="200"
                         Margin="10,0"
                         Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding ConfigClent2, UpdateSourceTrigger=PropertyChanged}" />
+                        Text="{Binding OPCAdr, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel
                     Grid.Row="3"
@@ -128,12 +145,8 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <TextBlock VerticalAlignment="Center" Text="客户端3" />
-                    <TextBox
-                        Width="200"
-                        Margin="10,0"
-                        Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding ConfigClent3, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBlock VerticalAlignment="Center" Text="{x:Static lang:Resources.SystemSettingView_TextBlock_08}" />
+                    <CheckBox HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,5,0,5" IsChecked="{Binding AutoConnectClient, UpdateSourceTrigger=PropertyChanged}"/>
                 </StackPanel>
             </Grid>
             <Grid Grid.Row="2" Margin="5">
@@ -150,7 +163,7 @@
                     Margin="5"
                     FontSize="25"
                     FontWeight="Bold"
-                    Text="图表配置" />
+                    Text="{x:Static lang:Resources.SystemSettingView_TextBlock_09}" />
                 <StackPanel
                     Grid.Row="1"
                     Margin="5"
@@ -160,16 +173,12 @@
                     <TextBlock
                         Width="100"
                         VerticalAlignment="Center"
-                        Text="图表刷新时间" />
-                    <ComboBox
-                        MinWidth="150"
-                        Margin="10,0.5"
-                        SelectedIndex="{Binding ChartReferTime, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource InputComboxStyle}">
-                        <ComboBoxItem Content="1 秒" />
-                        <ComboBoxItem Content="5 秒" />
-                        <ComboBoxItem Content="10 秒" />
-                    </ComboBox>
+                        Text="{x:Static lang:Resources.SystemSettingView_TextBlock_10}" />
+                    <TextBox
+                        Width="200"
+                        Margin="10,0"
+                        Style="{StaticResource InputTextBoxStyle}"
+                        Text="{Binding ServerAdr, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
                 <StackPanel
                     Grid.Row="3"
@@ -180,34 +189,44 @@
                     <TextBlock
                         Width="100"
                         VerticalAlignment="Center"
-                        Text="图表数据范围" />
-                    <ComboBox
-                        MinWidth="150"
-                        Margin="10,0.5"
-                        SelectedIndex="{Binding ChartDataRange, UpdateSourceTrigger=PropertyChanged}"
-                        Style="{StaticResource InputComboxStyle}">
-                        <ComboBoxItem Content="当天" />
-                        <ComboBoxItem Content="两天内" />
-                        <ComboBoxItem Content="一周内" />
-                        <ComboBoxItem Content="一个月内" />
-                        <ComboBoxItem Content="所有数据(数据量较大)" />
-                    </ComboBox>
+                        Text="{x:Static lang:Resources.SystemSettingView_TextBlock_11}" />
+                    <TextBox
+                        Width="200"
+                        Margin="10,0"
+                        Style="{StaticResource InputTextBoxStyle}"
+                        Text="{Binding RefreshTime, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
+            </Grid>
+            <Grid Grid.Row="3" Margin="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <TextBlock
+                    Grid.Row="0"
+                    Margin="5"
+                    FontSize="25"
+                    FontWeight="Bold"
+                    Text="{x:Static lang:Resources.SystemSettingView_TextBlock_12}" />
                 <StackPanel
-                    Grid.Row="5"
+                    Grid.Row="1"
                     Margin="5"
                     HorizontalAlignment="Left"
                     VerticalAlignment="Center"
                     Orientation="Horizontal">
-                    <TextBlock
-                        Width="100"
-                        VerticalAlignment="Center"
-                        Text="报表保存地址" />
-                    <TextBox
-                        MinWidth="200"
-                        Margin="10,0.5"
-                        Style="{StaticResource InputTextBoxStyle}"
-                        Text="{Binding ChartExcelSavePath, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button
+                    Width="150"
+                    Margin="5,0.5"
+                    cm:Message.Attach="[Event Click]=[Action onChangeLanguageToZh]"
+                    Content="{x:Static lang:Resources.SystemSettingView_Button_01}"
+                    Style="{StaticResource NormalButtonStyle}" />
+                    <Button
+                    Width="150"
+                    Height="30"
+                    Margin="5,0.5"
+                    cm:Message.Attach="[Event Click]=[Action onChangeLanguageToCn]"
+                    Content="{x:Static lang:Resources.SystemSettingView_Button_02}"
+                    Style="{StaticResource NormalButtonStyle}" />
                 </StackPanel>
             </Grid>
         </Grid>
@@ -221,7 +240,7 @@
                     Width="100"
                     Margin="5,0.5"
                     cm:Message.Attach="[Event Click]=[Action onInitConfigCommand]"
-                    Content="恢复默认"
+                    Content="{x:Static lang:Resources.SystemSettingView_Button_03}"
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
 
@@ -234,14 +253,14 @@
                     Width="100"
                     Margin="5,0.5"
                     cm:Message.Attach="[Event Click]=[Action onSaveConfigCommand]"
-                    Content="保存配置"
+                    Content="{x:Static lang:Resources.SystemSettingView_Button_04}"
                     Style="{StaticResource NormalButtonStyle}" />
 
                 <Button
                     Width="100"
                     Margin="5,0.5"
                     cm:Message.Attach="[Event Click]=[Action onCancelCommand]"
-                    Content="取消"
+                    Content="{x:Static lang:Resources.SystemSettingView_Button_05}"
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
         </Grid>

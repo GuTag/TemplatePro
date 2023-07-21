@@ -135,6 +135,7 @@ namespace PrintManager.MainClient.Components
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectClient", "TRUE");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ServerAdr", "192.168.0.10:8080");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "RefreshTime", "1000");
+                //IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ActualLanguage", "中文");
             }
 
             var viewModel = new ShellViewModel();

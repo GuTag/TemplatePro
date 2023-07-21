@@ -9,6 +9,7 @@ using PrintManager.MainClient.Components;
 using PrintManager.MainClient.Conntrols;
 using PrintManager.MainClient.Models;
 using PrintManager.MainClient.Models.Extension;
+using PrintManager.MainClient.ViewModels.Controls;
 using PrintManager.Shared;
 using PrintManager.Shared.Enums;
 using PrintManager.Shared.Utils;
@@ -101,7 +102,21 @@ namespace PrintManager.MainClient.ViewModels.Shell
                 }
             }
         }
-
+        private void ShowLoadingView()
+        {
+            string _tag = "参数设置";
+            dynamic settings = new ExpandoObject();
+            settings.Height = 300;
+            settings.Width = 700;
+            settings.SizeToContent = SizeToContent.Manual;
+            settings.Topmost = false;
+            //settings.Owner = Application.Current.MainWindow;
+            settings.Title = _tag;
+            settings.Owner = null;
+            var window = new LoadingViewModel();
+            window.Loading();
+            WindowManager.ShowWindow(window, null, settings);
+        }
         private void InitData()
         {
             ListViewOrderParent = TaskUtil.GetListViewItem();
@@ -363,6 +378,10 @@ namespace PrintManager.MainClient.ViewModels.Shell
 
         public void Download()
         {
+            Task.Run(() =>
+            {
+                WindowManagerExtension.ShowLoading(WindowManager);
+            });
 
             Console.WriteLine(isActive);
             List<string> cw = new List<string>();

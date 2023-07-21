@@ -358,6 +358,7 @@
     <Compile Include="Models\HistoryLogModel.cs" />
     <Compile Include="Models\ProductOrderModel.cs" />
     <Compile Include="Models\PrintItemModel.cs" />
+    <Compile Include="ViewModels\Controls\LoadingViewModel.cs" />
     <Compile Include="ViewModels\Dialog\AboutViewModel.cs" />
     <Compile Include="ViewModels\Dialog\AckViewModel.cs" />
     <Compile Include="ViewModels\Dialog\MessageViewModel.cs" />
@@ -434,6 +435,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\Controls\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Dialog\AckView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

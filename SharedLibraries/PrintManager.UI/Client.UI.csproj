@@ -270,6 +270,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Controls\ParModifyPicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Controls\PagePicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -355,6 +359,9 @@
     <Compile Include="Components\ThemeManager.cs" />
     <Compile Include="Components\ViewModelBase.cs" />
     <Compile Include="Contracts\IThemeManager.cs" />
+    <Compile Include="Controls\ParModifyPicker.xaml.cs">
+      <DependentUpon>ParModifyPicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PagePicker.xaml.cs">
       <DependentUpon>PagePicker.xaml</DependentUpon>
     </Compile>
@@ -419,6 +426,10 @@
     <ProjectReference Include="..\PrintManager.Shared\Client.Shared.csproj">
       <Project>{e58f1d09-03aa-481b-992d-4ad210143e7a}</Project>
       <Name>Client.Shared</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PrintManager.Sql\Client.Sql.csproj">
+      <Project>{AF6F07F0-B329-4C35-81F8-7399C0AB5120}</Project>
+      <Name>Client.Sql</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

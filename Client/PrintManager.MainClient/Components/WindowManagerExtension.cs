@@ -1,4 +1,5 @@
 ﻿using Caliburn.Micro;
+using PrintManager.MainClient.ViewModels.Controls;
 using PrintManager.MainClient.ViewModels.Dialog;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,20 @@ namespace PrintManager.MainClient.Components
                 windowManager.ShowDialog(new MessageViewModel(hintText.ToString()), null, settings);
             }));
             
+        }
+
+        public static void ShowLoading(IWindowManager windowManager)
+        {
+            Application.Current.Dispatcher.BeginInvoke(new System.Action(() =>
+            {
+                dynamic settings = new ExpandoObject();
+                settings.ResizeMode = ResizeMode.CanResize;
+                settings.ShowInTaskBar = false;
+                //settings.Background = new SolidColorBrush(Colors.Transparent);
+                settings.WindowStartupLocation = WindowStartupLocation.CenterOwner;
+                windowManager.ShowDialog(new LoadingViewModel(), null, settings);
+            }));
+
         }
 
         public static bool? ShowAckDialog(IWindowManager windowManager, string title, string hintText)

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace PrintManager.MainClient.ViewModels.Dialog
 {
-    public class MessageViewModel:ViewModelBase
+    public class MessageViewModel : ViewModelBase
     {
         public MessageViewModel(string text = "")
         {

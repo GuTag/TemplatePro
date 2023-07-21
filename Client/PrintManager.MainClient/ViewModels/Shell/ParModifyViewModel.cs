@@ -1,6 +1,7 @@
 ﻿using Caliburn.Micro;
 using Microsoft.Win32;
 using Newtonsoft.Json;
+using Opc.Ua;
 using PrintManager.MainClient.Components;
 using PrintManager.MainClient.Models;
 using PrintManager.MainClient.Views;
@@ -58,6 +59,11 @@ namespace PrintManager.MainClient.ViewModels.Shell
         //private int _statusComboxIndex = 0;
         public int TypeComboxIndex { get => _typeComboxIndex; set => Set(ref _typeComboxIndex, value); }
         private int _typeComboxIndex = 0;
+
+        public string ActualValue { get => _actualValue; set => Set(ref _actualValue, value); }
+        private string _actualValue;
+        public string NodeDes { get => _nodeDes; set => Set(ref _nodeDes, value); }
+        private string _nodeDes;
 
         public string SearchText { get => _searchText; set => Set(ref _searchText, value); }
         private string _searchText;
@@ -243,7 +249,7 @@ namespace PrintManager.MainClient.ViewModels.Shell
             }
         }
 
-        public void onProductOrderDoubleClick()
+        public void onProductOrderDoubleClick(object obj)
         {
 
             if (GlobalData.Instance.IsLogin)
@@ -274,6 +280,35 @@ namespace PrintManager.MainClient.ViewModels.Shell
                 WindowManagerExtension.ShowMessageDialog(WindowManager, "请登录! ");
             }
         }
+
+
+        public void onProductOrderChange(ParModify par)
+        {
+            if (par == null) return;
+            Console.WriteLine(par.NodeAdr);
+
+            ActualValue = par.ActualValue;
+            NodeDes = par.NodeDes;
+
+        }
+
+        public void onUpdateItemCommand()
+        {
+            if (SelectedOrder != null) 
+            {
+                ParModifyBLL.UpdateOfNodeAdr(new ParModify
+                {
+                    ActualValue = ActualValue,
+                    NodeDes = NodeDes,
+                    NodeAdr = SelectedOrder.NodeAdr,
+                    ClientName = SelectedOrder.ClientName,
+                    AddTime = SelectedOrder.AddTime,
+                    Index  = SelectedOrder.Index,
+                }); ;
+                UpdateProductOrderList();
+            }
+        }
+
 
         public void onInsertCommand()
         {

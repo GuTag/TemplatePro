@@ -18,6 +18,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="100" />
             <RowDefinition Height="35" />
         </Grid.RowDefinitions>
         <Grid Margin="0" Background="{DynamicResource WindowBackground}">
@@ -40,24 +41,6 @@
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
-                <!--<Button
-                    Margin="10,5"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Stretch"
-                    cm:Message.Attach="[Event Click]=[Action onInsertCommand]"
-                    Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
-                    pu:ButtonHelper.Icon="&#xe603;"
-                    Content="添加数据"
-                    Style="{StaticResource NormalButtonStyle}" />
-                <Button
-                    Margin="10,5"
-                    HorizontalAlignment="Right"
-                    VerticalAlignment="Stretch"
-                    cm:Message.Attach="[Event Click]=[Action onDeleteCommand]"
-                    Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
-                    pu:ButtonHelper.Icon="&#xe698;"
-                    Content="删除数据"
-                    Style="{StaticResource NormalButtonStyle}" />-->
                 <Button
                     Margin="10,5"
                     HorizontalAlignment="Right"
@@ -82,11 +65,11 @@
         <DataGrid
             x:Name="ProductOrdderDataGrid"
             Grid.Row="1"
-            cm:Message.Attach="[Event MouseDoubleClick]=[Action onProductOrderDoubleClick]"
+             cm:Message.Attach="onProductOrderChange($this)"
             ItemsSource="{Binding ProductOrderList}"
             SelectedItem="{Binding SelectedOrder}"
             Style="{StaticResource ProduceDataGridStyle}">
-            <DataGrid.Columns>
+            <DataGrid.Columns >
                 <DataGridTextColumn
                     Width="80"
                     Binding="{Binding Index}"
@@ -113,8 +96,42 @@
                     Header="描述" />
             </DataGrid.Columns>
         </DataGrid>
-        <Grid Grid.Row="2" Background="{DynamicResource WindowBackground}">
+        <Grid Grid.Row="3" Background="{DynamicResource WindowBackground}">
             <controls:PagePicker PageData="{Binding PageData}" />
+        </Grid>
+        <Grid Grid.Row="2" Background="{DynamicResource WindowBackground}">
+            <StackPanel   
+                Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, 
+                Converter={StaticResource BooleanToVisibilityConverter}, 
+                UpdateSourceTrigger=PropertyChanged}" 
+                HorizontalAlignment="Left" 
+                Orientation="Horizontal" >
+                <TextBox
+                    Width="220"
+                    Margin="30"
+                    pu:TextBoxHelper.Icon="&#xe659;"
+                    pu:TextBoxHelper.Watermark="修改值"
+                    FontSize="15"
+                    Style="{StaticResource InputTextBoxStyle}"
+                    Text="{Binding ActualValue, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox
+                    Width="400"
+                    Margin="30"
+                    pu:TextBoxHelper.Icon="&#xe659;"
+                    pu:TextBoxHelper.Watermark="描述修改"
+                    FontSize="15"
+                    Style="{StaticResource InputTextBoxStyle}"
+                    Text="{Binding NodeDes, UpdateSourceTrigger=PropertyChanged}" />
+                <Button
+                    Margin="30"
+                    Width="200"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Stretch"
+                    cm:Message.Attach="[Event Click]=[Action onUpdateItemCommand]"
+                    pu:ButtonHelper.Icon="&#xe601;"
+                    Content="更新数据"
+                    Style="{StaticResource NormalButtonStyle}" />
+            </StackPanel>
         </Grid>
     </Grid>
 </Grid>

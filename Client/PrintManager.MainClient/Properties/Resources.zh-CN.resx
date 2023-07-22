@@ -184,7 +184,7 @@
     <value>时间程序</value>
   </data>
   <data name="ShellView_TextBlock_06" xml:space="preserve">
-    <value>文本配置</value>
+    <value>看板文本配置</value>
   </data>
   <data name="ShellView_TextBlock_07" xml:space="preserve">
     <value>后端配置</value>
@@ -677,5 +677,20 @@
   </data>
   <data name="PagePicker_TextBlock_04" xml:space="preserve">
     <value> 条]</value>
+  </data>
+  <data name="ShellView_TextBlock_15" xml:space="preserve">
+    <value>语言切换</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_01" xml:space="preserve">
+    <value>中文</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_02" xml:space="preserve">
+    <value>英文</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_03" xml:space="preserve">
+    <value>系统语言切换至中文</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_04" xml:space="preserve">
+    <value>系统语言切换至英文</value>
   </data>
 </root>

@@ -60,5 +60,8 @@ namespace PrintManager.MainClient.Components
         public bool IsUpdateItem { get => _isUpdateItem; set { Set(ref _isUpdateItem, value); } }
         private bool _isUpdateItem;
 
+        //Language
+        public static string Language;
+
     }
 }

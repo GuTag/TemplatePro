@@ -22,6 +22,8 @@ using System.Windows.Media;
 using System.Windows;
 using System.Dynamic;
 using System.Timers;
+using PrintManager.Shared.Helpers;
+using System.Globalization;
 
 namespace PrintManager.MainClient.Components
 {
@@ -135,8 +137,24 @@ namespace PrintManager.MainClient.Components
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "AutoConnectClient", "TRUE");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ServerAdr", "192.168.0.10:8080");
                 IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "RefreshTime", "1000");
-                //IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "ActualLanguage", "中文");
+                IniUtil.IniWritevalue(Environments.ConfigFilePath, "Config", "Language", "zh-CN");
+            };
+
+            //Loading System Language
+            switch (IniUtil.IniReadvalue(Environments.ConfigFilePath, "Config", "Language"))
+            {
+                case "zh-CN":
+                    GlobalData.Language = "zh-CN";
+                    break;
+                case "en-US":
+                    GlobalData.Language = "en-US";
+                    break;
+                default:
+                    GlobalData.Language = "zh-CN";
+                    break;
             }
+
+            LanguageManager.Instance.ChangeLanguage(new CultureInfo(GlobalData.Language));
 
             var viewModel = new ShellViewModel();
             _windowManager.ShowWindow(viewModel);

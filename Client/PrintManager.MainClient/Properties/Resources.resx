@@ -678,4 +678,19 @@
   <data name="PagePicker_TextBlock_04" xml:space="preserve">
     <value></value>
   </data>
+  <data name="ShellView_TextBlock_15" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_01" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_02" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_03" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_04" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

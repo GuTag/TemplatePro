@@ -17,8 +17,7 @@ namespace PrintManager.MainClient.ViewModels.Shell
     {
         public SystemSettingViewModel()
         {
-            LanguageManager.Instance.ChangeLanguage(new CultureInfo("zh-CN"));
-            //ReadConfig();
+            ReadConfig();
         }
 
         #region 属性

@@ -184,7 +184,7 @@
     <value>Time Program</value>
   </data>
   <data name="ShellView_TextBlock_06" xml:space="preserve">
-    <value>Language Config</value>
+    <value>Dashboard Language</value>
   </data>
   <data name="ShellView_TextBlock_07" xml:space="preserve">
     <value>Server Config</value>
@@ -677,5 +677,20 @@
   </data>
   <data name="PagePicker_TextBlock_04" xml:space="preserve">
     <value> Items]</value>
+  </data>
+  <data name="ShellView_TextBlock_15" xml:space="preserve">
+    <value>Language Switch</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_01" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_02" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_03" xml:space="preserve">
+    <value>System Language Change To Chinese</value>
+  </data>
+  <data name="SystemLanguageView_TextBlock_04" xml:space="preserve">
+    <value>System Language Change To English</value>
   </data>
 </root>

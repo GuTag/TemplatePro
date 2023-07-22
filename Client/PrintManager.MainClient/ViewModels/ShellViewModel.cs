@@ -59,6 +59,7 @@ namespace PrintManager.MainClient.ViewModels
         public ProductLogViewModel ProductLogViewModel { get; } = new ProductLogViewModel();
         public EventLogViewModel EventLogViewModel { get; } = new EventLogViewModel();
         public ServerViewModel ServerViewModel { get; } = new ServerViewModel();
+        public SystemLanguageViewModel SystemLanguageViewModel { get; } = new SystemLanguageViewModel();
         public ParModifyViewModel ParModifyViewModel { get; } = new ParModifyViewModel();
         public TimeProgramViewModel TimeProgramViewModel { get; } = new TimeProgramViewModel();
 

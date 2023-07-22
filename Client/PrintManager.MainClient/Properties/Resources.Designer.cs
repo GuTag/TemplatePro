@@ -1584,6 +1584,51 @@ namespace PrintManager.MainClient.Properties {
         /// <summary>
         ///   Looks up a localized string similar to .
         /// </summary>
+        public static string ShellView_TextBlock_15 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SystemLanguageView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("SystemLanguageView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SystemLanguageView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("SystemLanguageView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SystemLanguageView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("SystemLanguageView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string SystemLanguageView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("SystemLanguageView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
         public static string SystemSettingView_Button_01 {
             get {
                 return ResourceManager.GetString("SystemSettingView_Button_01", resourceCulture);

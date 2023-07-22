@@ -391,6 +391,7 @@
     <Compile Include="ViewModels\Shell\ParUpdateTemp3ViewModel.cs" />
     <Compile Include="ViewModels\Shell\ParUpdateTemp2ViewModel.cs" />
     <Compile Include="ViewModels\Shell\ParModifyViewModel.cs" />
+    <Compile Include="ViewModels\Shell\SystemLanguageViewModel.cs" />
     <Compile Include="ViewModels\Shell\TimeProgramViewModel.cs" />
     <Compile Include="ViewModels\Shell\ServerViewModel.cs" />
     <Compile Include="ViewModels\Shell\LanuageViewModel.cs" />
@@ -530,6 +531,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\Shell\SystemLanguageView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\Shell\TimeProgramView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -590,6 +595,10 @@
     <Resource Include="Resources\Images\splashscreen.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Images\LanguageIcon\en-US.png" />
+    <Resource Include="Resources\Images\LanguageIcon\zh-CN.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\..\packages\ExcelDna.Interop.15.0.0\build\ExcelDna.Interop.targets" Condition="Exists('..\..\packages\ExcelDna.Interop.15.0.0\build\ExcelDna.Interop.targets')" />

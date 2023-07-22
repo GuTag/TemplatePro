@@ -4,7 +4,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cm="http://www.caliburnproject.org"
-    xmlns:controls="clr-namespace:PrintManager.UI.Controls;assembly=PrintManager.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
+    xmlns:controls="clr-namespace:PrintManager.MainClient.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:PrintManager.MainClient.Views.Shell"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -25,7 +26,7 @@
                 <TextBlock
                     Margin="10,0,5,0"
                     VerticalAlignment="Center"
-                    Text="时间" />
+                    Text="{x:Static lang:Resources.ProductView_TextBlock_01}" />
                 <pu:DateTimePicker
                     BorderThickness="0,0,0,2"
                     FocusedBorderBrush="{DynamicResource InputHoverBrush}"
@@ -45,14 +46,14 @@
                 <TextBlock
                     Margin="10,0,5,0"
                     VerticalAlignment="Center"
-                    Text="类型" />
+                    Text="{x:Static lang:Resources.ProductView_TextBlock_02}" />
                 <ComboBox
                     Width="150"
                     SelectedIndex="{Binding TypeComboxIndex, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource InputComboxStyle}">
-                    <ComboBoxItem Content="离散量事件" />
-                    <ComboBoxItem Content="离散量故障" />
-                    <ComboBoxItem Content="离散量警告" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.ProductView_TextBlock_03}" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.ProductView_TextBlock_04}" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.ProductView_TextBlock_05}" />
                 </ComboBox>
 
                 <TextBox
@@ -60,7 +61,7 @@
                     Margin="10,0,0,0"
                     cm:Message.Attach="[Event KeyDown] = [Action onInputTextSearch($executionContext)]"
                     pu:TextBoxHelper.Icon="&#xe627;"
-                    pu:TextBoxHelper.Watermark="输入地址查询"
+                    pu:TextBoxHelper.Watermark="{x:Static lang:Resources.ProductView_TextBlock_06}"
                     FontSize="13"
                     Style="{StaticResource InputTextBoxStyle}"
                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
@@ -69,7 +70,7 @@
                     Width="120"
                     Margin="5,0"
                     cm:Message.Attach="[Event Click]=[Action onSearchButtonClick]"
-                    Content="查询"
+                    Content="{x:Static lang:Resources.ProductView_TextBlock_07}"
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
             <StackPanel HorizontalAlignment="Right" Orientation="Horizontal">
@@ -80,7 +81,7 @@
                     cm:Message.Attach="[Event Click]=[Action onInsertCommand]"
                     Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
                     pu:ButtonHelper.Icon="&#xe603;"
-                    Content="添加数据"
+                    Content="{x:Static lang:Resources.ProductView_TextBlock_08}"
                     Style="{StaticResource NormalButtonStyle}" />
                 <Button
                     Margin="10,5"
@@ -89,7 +90,7 @@
                     cm:Message.Attach="[Event Click]=[Action onDeleteCommand]"
                     Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
                     pu:ButtonHelper.Icon="&#xe698;"
-                    Content="删除数据"
+                    Content="{x:Static lang:Resources.ProductView_TextBlock_09}"
                     Style="{StaticResource NormalButtonStyle}" />
                 <Button
                     Margin="10,5"
@@ -98,7 +99,7 @@
                     cm:Message.Attach="[Event Click]=[Action onImportExcelCommand]"
                     Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}"
                     pu:ButtonHelper.Icon="&#xe65f;"
-                    Content="导入Excel数据"
+                    Content="{x:Static lang:Resources.ProductView_TextBlock_10}"
                     Style="{StaticResource NormalButtonStyle}" /> 
             </StackPanel>
 
@@ -114,31 +115,31 @@
                 <DataGridTextColumn
                     Width="170"
                     Binding="{Binding AddTime, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}', ConverterCulture=zh-CN}"
-                    Header="添加时间" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_11}" />
                 <DataGridTextColumn
                     Width="150"
                      Binding="{Binding ClientName}"
-                    Header="客户端" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_12}" />
                 <DataGridTextColumn
                     Width="100"
                     Binding="{Binding NodeType}"
-                    Header="数据类型" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_13}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding NodeTypeView}"
-                    Header="采集类型" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_14}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding NodeIndexLang}"
-                    Header="文本索引" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_15}" />
                 <DataGridTextColumn
                     Width="300"
                     Binding="{Binding NodeAdr}"
-                    Header="地址" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_16}" />
                 <DataGridTextColumn
                     Width="*"
                     Binding="{Binding NodeDes}"
-                    Header="描述" />
+                    Header="{x:Static lang:Resources.ProductView_TextBlock_17}" />
             </DataGrid.Columns>
         </DataGrid>
         <Grid Grid.Row="2" Background="{DynamicResource WindowBackground}">

@@ -302,6 +302,7 @@
     <Compile Include="Helpers\AppConfigHelper.cs" />
     <Compile Include="Helpers\CopyHeplers.cs" />
     <Compile Include="Helpers\ImageHelpers.cs" />
+    <Compile Include="Helpers\LanguageManager.cs" />
     <Compile Include="Helpers\OrderHelpers.cs" />
     <Compile Include="OPC\OPCUtil.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

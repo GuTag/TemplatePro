@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cm="http://www.caliburnproject.org"
     xmlns:controls="clr-namespace:PrintManager.UI.Controls;assembly=PrintManager.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:PrintManager.MainClient.Views.Shell"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -19,27 +20,27 @@
                 <DataGridTextColumn
                     Width="150"
                     Binding="{Binding AddTime, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}', ConverterCulture=zh-CN}"
-                    Header="时间" />
+                    Header="{x:Static lang:Resources.EventLogView_TextBlock_01}" />
                 <DataGridTextColumn
                     Width="150"
                     Binding="{Binding ClientName}"
-                    Header="客户端" />
+                    Header="{x:Static lang:Resources.EventLogView_TextBlock_02}" />
                 <DataGridTextColumn
                     Width="200"
                     Binding="{Binding NodeAdr}"
-                    Header="地址" />
+                    Header="{x:Static lang:Resources.EventLogView_TextBlock_03}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding ActualValue}"
-                    Header="当前值" />
+                    Header="{x:Static lang:Resources.EventLogView_TextBlock_04}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding LogType}"
-                    Header="类型" />
+                    Header="{x:Static lang:Resources.EventLogView_TextBlock_05}" />
                 <DataGridTemplateColumn
                     Width="*"
                     MinWidth="300"
-                    Header="内容">
+                    Header="{x:Static lang:Resources.EventLogView_TextBlock_06}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Foreground="{Binding LogType, Converter={StaticResource IntColorConverter}}" Text="{Binding Message}" />
@@ -54,7 +55,7 @@
             VerticalAlignment="Top"
             cm:Message.Attach="[Event Click]=[Action HistoryLogCommand]"
             pu:ButtonHelper.Icon="&#xe658;"
-            Content="历史记录"
+            Content="{x:Static lang:Resources.EventLogView_TextBlock_07}"
             Style="{StaticResource NormalButtonStyle}" />
     </Grid>
 </Grid>

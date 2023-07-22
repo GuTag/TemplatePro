@@ -168,4 +168,514 @@
   <data name="SystemSettingView_TextBlock_12" xml:space="preserve">
     <value>Change Language</value>
   </data>
+  <data name="ShellView_TextBlock_01" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="ShellView_TextBlock_02" xml:space="preserve">
+    <value>Bool</value>
+  </data>
+  <data name="ShellView_TextBlock_03" xml:space="preserve">
+    <value>Analog</value>
+  </data>
+  <data name="ShellView_TextBlock_04" xml:space="preserve">
+    <value>Parameter Change</value>
+  </data>
+  <data name="ShellView_TextBlock_05" xml:space="preserve">
+    <value>Time Program</value>
+  </data>
+  <data name="ShellView_TextBlock_06" xml:space="preserve">
+    <value>Language Config</value>
+  </data>
+  <data name="ShellView_TextBlock_07" xml:space="preserve">
+    <value>Server Config</value>
+  </data>
+  <data name="ShellView_TextBlock_08" xml:space="preserve">
+    <value>Sub Logs</value>
+  </data>
+  <data name="ShellView_TextBlock_09" xml:space="preserve">
+    <value>System Logs</value>
+  </data>
+  <data name="ShellView_TextBlock_10" xml:space="preserve">
+    <value>IP</value>
+  </data>
+  <data name="ShellView_TextBlock_11" xml:space="preserve">
+    <value>Status Of DB</value>
+  </data>
+  <data name="ShellView_TextBlock_12" xml:space="preserve">
+    <value>Status Of Client</value>
+  </data>
+  <data name="ShellView_TextBlock_13" xml:space="preserve">
+    <value>Sub Of OPC</value>
+  </data>
+  <data name="ShellView_TextBlock_14" xml:space="preserve">
+    <value>Status Of Server</value>
+  </data>
+  <data name="HomeView_TextBlock_01" xml:space="preserve">
+    <value>Number Of Online Client </value>
+  </data>
+  <data name="HomeView_TextBlock_02" xml:space="preserve">
+    <value>Bool Of Number</value>
+  </data>
+  <data name="HomeView_TextBlock_03" xml:space="preserve">
+    <value>Analog Of Number</value>
+  </data>
+  <data name="HomeView_TextBlock_04" xml:space="preserve">
+    <value>Language Of Number</value>
+  </data>
+  <data name="HomeView_TextBlock_05" xml:space="preserve">
+    <value>Percent Of Total Node</value>
+  </data>
+  <data name="HomeView_TextBlock_06" xml:space="preserve">
+    <value>Node PreView</value>
+  </data>
+  <data name="HomeView_TextBlock_07" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="HomeView_TextBlock_08" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="HomeView_TextBlock_09" xml:space="preserve">
+    <value>OPC UA Address</value>
+  </data>
+  <data name="HomeView_TextBlock_10" xml:space="preserve">
+    <value>Total Of Sub Node</value>
+  </data>
+  <data name="HomeView_TextBlock_11" xml:space="preserve">
+    <value>Publish Address</value>
+  </data>
+  <data name="HomeView_TextBlock_12" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="ProductView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="ProductView_TextBlock_02" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="ProductView_TextBlock_03" xml:space="preserve">
+    <value>Bool | Event</value>
+  </data>
+  <data name="ProductView_TextBlock_04" xml:space="preserve">
+    <value>Bool | Fault</value>
+  </data>
+  <data name="ProductView_TextBlock_05" xml:space="preserve">
+    <value>Bool | Warn</value>
+  </data>
+  <data name="ProductView_TextBlock_06" xml:space="preserve">
+    <value>Input Address Query</value>
+  </data>
+  <data name="ProductView_TextBlock_07" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ProductView_TextBlock_08" xml:space="preserve">
+    <value>Add Data</value>
+  </data>
+  <data name="ProductView_TextBlock_09" xml:space="preserve">
+    <value>Del Data</value>
+  </data>
+  <data name="ProductView_TextBlock_10" xml:space="preserve">
+    <value>Import Data Of Excel</value>
+  </data>
+  <data name="ProductView_TextBlock_11" xml:space="preserve">
+    <value>Add Time</value>
+  </data>
+  <data name="ProductView_TextBlock_12" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="ProductView_TextBlock_13" xml:space="preserve">
+    <value>Data Type</value>
+  </data>
+  <data name="ProductView_TextBlock_14" xml:space="preserve">
+    <value>Visu Type</value>
+  </data>
+  <data name="ProductView_TextBlock_15" xml:space="preserve">
+    <value>Language Index</value>
+  </data>
+  <data name="ProductView_TextBlock_16" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ProductView_TextBlock_17" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_08" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_07" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_06" xml:space="preserve">
+    <value>Add Data</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_05" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_04" xml:space="preserve">
+    <value>Language Index</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_03" xml:space="preserve">
+    <value>Visu Type</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_02" xml:space="preserve">
+    <value>Data Type</value>
+  </data>
+  <data name="ParUpdateTemp1View_TextBlock_01" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_17" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_16" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_15" xml:space="preserve">
+    <value>Add Data</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_14" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_13" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_12" xml:space="preserve">
+    <value>L Lanuage</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_11" xml:space="preserve">
+    <value>LL Language</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_10" xml:space="preserve">
+    <value>H Language</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_09" xml:space="preserve">
+    <value>HH Language</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_08" xml:space="preserve">
+    <value>L Value</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_07" xml:space="preserve">
+    <value>LL Value</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_06" xml:space="preserve">
+    <value>H Value</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_05" xml:space="preserve">
+    <value>HH Value</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_04" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_03" xml:space="preserve">
+    <value>Visu Type</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_02" xml:space="preserve">
+    <value>Data Type</value>
+  </data>
+  <data name="ParUpdateTemp2View_TextBlock_01" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="ParUpdateTemp3View_TextBlock_06" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ParUpdateTemp3View_TextBlock_05" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ParUpdateTemp3View_TextBlock_04" xml:space="preserve">
+    <value>Add Data</value>
+  </data>
+  <data name="ParUpdateTemp3View_TextBlock_03" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="ParUpdateTemp3View_TextBlock_02" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="ParUpdateTemp3View_TextBlock_01" xml:space="preserve">
+    <value>Language Index</value>
+  </data>
+  <data name="ParUpdateTemp4View_TextBlock_01" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ParUpdateTemp4View_TextBlock_02" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ParUpdateTemp4View_TextBlock_03" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ParUpdateTemp4View_TextBlock_04" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="ParModifyView_TextBlock_13" xml:space="preserve">
+    <value>Update</value>
+  </data>
+  <data name="ParModifyView_TextBlock_12" xml:space="preserve">
+    <value>Change Of Description</value>
+  </data>
+  <data name="ParModifyView_TextBlock_11" xml:space="preserve">
+    <value>Change Of Value</value>
+  </data>
+  <data name="ParModifyView_TextBlock_10" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="ParModifyView_TextBlock_09" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="ParModifyView_TextBlock_08" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="ParModifyView_TextBlock_07" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="ParModifyView_TextBlock_06" xml:space="preserve">
+    <value>Update Time</value>
+  </data>
+  <data name="ParModifyView_TextBlock_05" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="ParModifyView_TextBlock_04" xml:space="preserve">
+    <value>Import Of Excel</value>
+  </data>
+  <data name="ParModifyView_TextBlock_03" xml:space="preserve">
+    <value>Download</value>
+  </data>
+  <data name="ParModifyView_TextBlock_02" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="ParModifyView_TextBlock_01" xml:space="preserve">
+    <value>Input Address | Description Search</value>
+  </data>
+  <data name="LogView_TextBlock_05" xml:space="preserve">
+    <value>History Logs</value>
+  </data>
+  <data name="LogView_TextBlock_04" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="LogView_TextBlock_03" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="LogView_TextBlock_02" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="LogView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="LoginView_TextBlock_03" xml:space="preserve">
+    <value>Login</value>
+  </data>
+  <data name="LoginView_TextBlock_02" xml:space="preserve">
+    <value>PassWord</value>
+  </data>
+  <data name="LoginView_TextBlock_01" xml:space="preserve">
+    <value>UserName</value>
+  </data>
+  <data name="LanguageView_TextBlock_10" xml:space="preserve">
+    <value>English</value>
+  </data>
+  <data name="LanguageView_TextBlock_09" xml:space="preserve">
+    <value>Chinese</value>
+  </data>
+  <data name="LanguageView_TextBlock_08" xml:space="preserve">
+    <value>Language Index</value>
+  </data>
+  <data name="LanguageView_TextBlock_07" xml:space="preserve">
+    <value>Add Time</value>
+  </data>
+  <data name="LanguageView_TextBlock_06" xml:space="preserve">
+    <value>Import Of Excel</value>
+  </data>
+  <data name="LanguageView_TextBlock_05" xml:space="preserve">
+    <value>Del Data</value>
+  </data>
+  <data name="LanguageView_TextBlock_04" xml:space="preserve">
+    <value>Add Data</value>
+  </data>
+  <data name="LanguageView_TextBlock_03" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="LanguageView_TextBlock_02" xml:space="preserve">
+    <value>Imput Language Of Index</value>
+  </data>
+  <data name="LanguageView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_11" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_09" xml:space="preserve">
+    <value>Source</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_10" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_08" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_07" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_06" xml:space="preserve">
+    <value>Input Content | Source Query</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_05" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_04" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_03" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_02" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="HistoryLogView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="EventLogView_TextBlock_07" xml:space="preserve">
+    <value>History Logs</value>
+  </data>
+  <data name="EventLogView_TextBlock_06" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="EventLogView_TextBlock_05" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="EventLogView_TextBlock_04" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="EventLogView_TextBlock_03" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="EventLogView_TextBlock_02" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="EventLogView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_13" xml:space="preserve">
+    <value>Content</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_12" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_11" xml:space="preserve">
+    <value>Value</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_10" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_09" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_08" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_07" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_06" xml:space="preserve">
+    <value>Input Content | Source Query</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_05" xml:space="preserve">
+    <value>Error</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_04" xml:space="preserve">
+    <value>Warning</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_03" xml:space="preserve">
+    <value>Info</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_02" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="EventHistoryLogView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="AnalogView_TextBlock_21" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="AnalogView_TextBlock_20" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="AnalogView_TextBlock_19" xml:space="preserve">
+    <value>L Language</value>
+  </data>
+  <data name="AnalogView_TextBlock_18" xml:space="preserve">
+    <value>LL Language</value>
+  </data>
+  <data name="AnalogView_TextBlock_17" xml:space="preserve">
+    <value>H Language</value>
+  </data>
+  <data name="AnalogView_TextBlock_16" xml:space="preserve">
+    <value>HH Language</value>
+  </data>
+  <data name="AnalogView_TextBlock_15" xml:space="preserve">
+    <value>L Value</value>
+  </data>
+  <data name="AnalogView_TextBlock_14" xml:space="preserve">
+    <value>LL Value</value>
+  </data>
+  <data name="AnalogView_TextBlock_13" xml:space="preserve">
+    <value>H Value</value>
+  </data>
+  <data name="AnalogView_TextBlock_12" xml:space="preserve">
+    <value>HH Value</value>
+  </data>
+  <data name="AnalogView_TextBlock_11" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="AnalogView_TextBlock_10" xml:space="preserve">
+    <value>Visu Type</value>
+  </data>
+  <data name="AnalogView_TextBlock_09" xml:space="preserve">
+    <value>Data Type</value>
+  </data>
+  <data name="AnalogView_TextBlock_08" xml:space="preserve">
+    <value>Client</value>
+  </data>
+  <data name="AnalogView_TextBlock_07" xml:space="preserve">
+    <value>Add Time</value>
+  </data>
+  <data name="AnalogView_TextBlock_06" xml:space="preserve">
+    <value>Import Of Excel</value>
+  </data>
+  <data name="AnalogView_TextBlock_05" xml:space="preserve">
+    <value>Del Data</value>
+  </data>
+  <data name="AnalogView_TextBlock_04" xml:space="preserve">
+    <value>Add Data</value>
+  </data>
+  <data name="AnalogView_TextBlock_03" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="AnalogView_TextBlock_02" xml:space="preserve">
+    <value>Input Address Query</value>
+  </data>
+  <data name="AnalogView_TextBlock_01" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Dialog_Comm_04" xml:space="preserve">
+    <value>Acknowledge Of Operation</value>
+  </data>
+  <data name="Dialog_Comm_03" xml:space="preserve">
+    <value>Message Hint</value>
+  </data>
+  <data name="Dialog_Comm_02" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Dialog_Comm_01" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="TimeProgramView_TextBlock_01" xml:space="preserve">
+    <value>Save | Download</value>
+  </data>
+  <data name="PagePicker_TextBlock_01" xml:space="preserve">
+    <value>[Total </value>
+  </data>
+  <data name="PagePicker_TextBlock_02" xml:space="preserve">
+    <value> Pages]</value>
+  </data>
+  <data name="PagePicker_TextBlock_03" xml:space="preserve">
+    <value>[Total </value>
+  </data>
+  <data name="PagePicker_TextBlock_04" xml:space="preserve">
+    <value> Items]</value>
+  </data>
 </root>

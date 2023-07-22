@@ -368,6 +368,16 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.zh-CN.resx</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Resources.en-US.Designer.cs">
+      <DependentUpon>Resources.en-US.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <Compile Include="Resources\Resources.zh-CN.Designer.cs">
+      <DependentUpon>Resources.zh-CN.resx</DependentUpon>
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+    </Compile>
     <Compile Include="ViewModels\Controls\LoadingViewModel.cs" />
     <Compile Include="ViewModels\Dialog\AboutViewModel.cs" />
     <Compile Include="ViewModels\Dialog\AckViewModel.cs" />
@@ -394,6 +404,9 @@
     <Compile Include="ViewModels\Shell\ProductLogViewModel.cs" />
     <Compile Include="ViewModels\Shell\ProductViewModel.cs" />
     <Compile Include="ViewModels\Shell\SystemSettingViewModel.cs" />
+    <Compile Include="Views\Controls\PagePicker.xaml.cs">
+      <DependentUpon>PagePicker.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LabelEditView.xaml.cs">
       <DependentUpon>LabelEditView.xaml</DependentUpon>
     </Compile>
@@ -428,6 +441,14 @@
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.zh-CN.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resources.en-US.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.en-US.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\Resources.zh-CN.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.zh-CN.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -454,6 +475,10 @@
   </ItemGroup>
   <ItemGroup>
     <Page Include="Views\Controls\LoadingView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Controls\PagePicker.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

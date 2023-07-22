@@ -9,6 +9,7 @@
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:pucore="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     Width="600"
     Height="200"
 
@@ -26,7 +27,7 @@
         </Grid.RowDefinitions>
 
         <Grid>
-            <TextBlock Margin="20,5,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="22" Text="消息提示"/>
+            <TextBlock Margin="20,5,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="22" Text="{x:Static lang:Resources.Dialog_Comm_03}"/>
         </Grid>
         <Grid Grid.Row="1">
             <ScrollViewer
@@ -59,7 +60,7 @@
                     Width="150"
                     Margin="5,0.5" 
                     cm:Message.Attach="[Event Click]=[Action onCancelCommand]"
-                    Content="确认"
+                    Content="{x:Static lang:Resources.Dialog_Comm_01}"
                     Background="#CCD5F0"
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>

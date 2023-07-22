@@ -11,6 +11,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:oxyplot="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     xmlns:pucore="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
     xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
@@ -350,7 +351,7 @@
                 Margin="10,0,0,0"
                 pu:ButtonHelper.Icon="&#xe601;"
                 cm:Message.Attach="[Event Click]=[Action Download]"
-                Content="保存下载"
+                Content="{x:Static lang:Resources.TimeProgramView_TextBlock_01}"
                 Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
             <StackPanel 

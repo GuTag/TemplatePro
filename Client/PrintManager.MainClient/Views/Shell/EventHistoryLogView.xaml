@@ -3,7 +3,8 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:cm="http://www.caliburnproject.org"
-    xmlns:controls="clr-namespace:PrintManager.UI.Controls;assembly=PrintManager.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
+    xmlns:controls="clr-namespace:PrintManager.MainClient.Views.Controls"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:PrintManager.MainClient.Views.Shell"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -24,7 +25,7 @@
                 <TextBlock
                     Margin="10,0,5,0"
                     VerticalAlignment="Center"
-                    Text="时间" />
+                    Text="{x:Static lang:Resources.EventHistoryLogView_TextBlock_01}" />
                 <pu:DateTimePicker SelectedDateTime="{Binding StartDateTime}" TextStringFormat="yyyy-MM-dd" />
                 <TextBlock
                     Margin="3"
@@ -36,16 +37,16 @@
                     Margin="5,0"
                     SelectedIndex="{Binding TypeComboxIndex, UpdateSourceTrigger=PropertyChanged}"
                     Style="{StaticResource NormalComboxStyle}">
-                    <ComboBoxItem Content="不选择" />
-                    <ComboBoxItem Content="信息-Info" />
-                    <ComboBoxItem Content="警告-Warning" />
-                    <ComboBoxItem Content="异常-Error" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.EventHistoryLogView_TextBlock_02}" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.EventHistoryLogView_TextBlock_03}" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.EventHistoryLogView_TextBlock_04}" />
+                    <ComboBoxItem Content="{x:Static lang:Resources.EventHistoryLogView_TextBlock_05}" />
                 </ComboBox>
                 <TextBox
                     Width="220"
                     Margin="10,0,0,0"
                     pu:TextBoxHelper.Icon="&#xe627;"
-                    pu:TextBoxHelper.Watermark="输入内容|来源查询"
+                    pu:TextBoxHelper.Watermark="{x:Static lang:Resources.EventHistoryLogView_TextBlock_06}"
                     FontSize="13"
                     Style="{StaticResource NormalTextBoxStyle}"
                     Text="{Binding SearchText, UpdateSourceTrigger=PropertyChanged}" />
@@ -54,7 +55,7 @@
                     Width="100"
                     Margin="5,0"
                     cm:Message.Attach="[Event Click]=[Action SearchCommand]"
-                    Content="查询"
+                    Content="{x:Static lang:Resources.EventHistoryLogView_TextBlock_07}"
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
 
@@ -67,27 +68,27 @@
                 <DataGridTextColumn
                     Width="180"
                     Binding="{Binding AddTime, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}', ConverterCulture=zh-CN}"
-                    Header="时间" />
+                    Header="{x:Static lang:Resources.EventHistoryLogView_TextBlock_08}" />
                 <DataGridTextColumn
                     Width="150"
                     Binding="{Binding ClientName}"
-                    Header="客户端" />
+                    Header="{x:Static lang:Resources.EventHistoryLogView_TextBlock_09}" />
                 <DataGridTextColumn
                     Width="200"
                     Binding="{Binding NodeAdr}"
-                    Header="地址" />
+                    Header="{x:Static lang:Resources.EventHistoryLogView_TextBlock_10}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding ActualValue}"
-                    Header="当前值" />
+                    Header="{x:Static lang:Resources.EventHistoryLogView_TextBlock_11}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding LogType}"
-                    Header="类型" />
+                    Header="{x:Static lang:Resources.EventHistoryLogView_TextBlock_12}" />
                 <DataGridTemplateColumn
                     Width="*"
                     MinWidth="300"
-                    Header="内容">
+                    Header="{x:Static lang:Resources.EventHistoryLogView_TextBlock_13}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Foreground="{Binding LogType, Converter={StaticResource IntColorConverter}}" Text="{Binding Message}" />

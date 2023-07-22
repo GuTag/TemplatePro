@@ -197,7 +197,7 @@
                         Text="{Binding RefreshTime, UpdateSourceTrigger=PropertyChanged}" />
                 </StackPanel>
             </Grid>
-            <Grid Grid.Row="3" Margin="5">
+            <!--<Grid Grid.Row="3" Margin="5">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
                     <RowDefinition/>
@@ -228,7 +228,7 @@
                     Content="{x:Static lang:Resources.SystemSettingView_Button_02}"
                     Style="{StaticResource NormalButtonStyle}" />
                 </StackPanel>
-            </Grid>
+            </Grid>-->
         </Grid>
         <Grid Grid.Row="1">
             <StackPanel

@@ -2,6 +2,7 @@
     x:Class="PrintManager.MainClient.Views.Shell.LogView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     xmlns:cm="http://www.caliburnproject.org"
     xmlns:controls="clr-namespace:PrintManager.UI.Controls;assembly=PrintManager.UI"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -19,19 +20,19 @@
                 <DataGridTextColumn
                     Width="150"
                     Binding="{Binding AddTime, StringFormat='{}{0:yyyy-MM-dd HH:mm:ss}', ConverterCulture=zh-CN}"
-                    Header="时间" />
+                    Header="{x:Static lang:Resources.LogView_TextBlock_01}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding Source}"
-                    Header="来源" />
+                    Header="{x:Static lang:Resources.LogView_TextBlock_02}" />
                 <DataGridTextColumn
                     Width="120"
                     Binding="{Binding LogType}"
-                    Header="类型" />
+                    Header="{x:Static lang:Resources.LogView_TextBlock_03}" />
                 <DataGridTemplateColumn
                     Width="*"
                     MinWidth="300"
-                    Header="内容">
+                    Header="{x:Static lang:Resources.LogView_TextBlock_04}">
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
                             <TextBlock Foreground="{Binding LogType, Converter={StaticResource IntColorConverter}}" Text="{Binding Message}" />
@@ -46,7 +47,7 @@
             VerticalAlignment="Top"
             cm:Message.Attach="[Event Click]=[Action HistoryLogCommand]"
             pu:ButtonHelper.Icon="&#xe658;"
-            Content="历史记录"
+            Content="{x:Static lang:Resources.LogView_TextBlock_05}"
             Style="{StaticResource NormalButtonStyle}" />
     </Grid>
 </Grid>

@@ -9,6 +9,7 @@
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:pucore="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     d:DesignHeight="300"
     d:DesignWidth="500"
     mc:Ignorable="d">
@@ -39,6 +40,9 @@
                     Text="{Binding Title}" />
                 <TextBlock FontSize="18" Text="" />
             </StackPanel>-->
+        </Grid>
+        <Grid>
+            <TextBlock Margin="20,5,5,0"  HorizontalAlignment="Left" VerticalAlignment="Center"  FontSize="22" Text="{x:Static lang:Resources.Dialog_Comm_04}"/>
         </Grid>
         <ScrollViewer
             Grid.Row="1"
@@ -74,7 +78,7 @@
                     Margin="10,0"
                     VerticalAlignment="Center"
                     cm:Message.Attach="[Event Click]=[Action onSureButton]"
-                    Content="确认"
+                    Content="{x:Static lang:Resources.Dialog_Comm_01}"
                     Style="{StaticResource NormalButtonStyle}" />
                 <Button
                     Width="90"
@@ -83,7 +87,7 @@
                     VerticalAlignment="Center"
                     cm:Message.Attach="[Event Click]=[Action onCancelButton]"
                     Background="#CCD5F0"
-                    Content="取消"
+                    Content="{x:Static lang:Resources.Dialog_Comm_02}"
                     Style="{StaticResource NormalButtonStyle}" />
             </StackPanel>
         </Border>

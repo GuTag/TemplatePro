@@ -10,6 +10,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:oxyplot="clr-namespace:OxyPlot.Wpf;assembly=OxyPlot.Wpf"
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     xmlns:pucore="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
     d:DesignHeight="850"
@@ -39,7 +40,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 Opacity="0.5"
-                                Text="在线客户端数量" />
+                                Text="{x:Static lang:Resources.HomeView_TextBlock_01}" />
                         </StackPanel>
                     </Border>
                     <Border
@@ -75,7 +76,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 Opacity="0.5"
-                                Text="离散量数量" />
+                                Text="{x:Static lang:Resources.HomeView_TextBlock_02}" />
                         </StackPanel>
                     </Border>
                     <Border
@@ -111,7 +112,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 Opacity="0.5"
-                                Text="模拟量数量" />
+                                Text="{x:Static lang:Resources.HomeView_TextBlock_03}" />
                         </StackPanel>
                     </Border>
                     <Border
@@ -147,7 +148,7 @@
                             <TextBlock
                                 HorizontalAlignment="Center"
                                 Opacity="0.5"
-                                Text="文本节点数量" />
+                                Text="{x:Static lang:Resources.HomeView_TextBlock_04}" />
                         </StackPanel>
                     </Border>
                     <Border
@@ -183,7 +184,7 @@
                             <TextBlock
                                 Margin="18,0,0,0"
                                 VerticalAlignment="Center"
-                                Text="节点百分比" />
+                                Text="{x:Static lang:Resources.HomeView_TextBlock_05}" />
                             <ListBox
                                 Width="250"
                                 Background="Transparent"
@@ -221,7 +222,7 @@
                     <TextBlock
                         Margin="0,10,0,0"
                         HorizontalAlignment="Center"
-                        Text="节点总览" />
+                        Text="{x:Static lang:Resources.HomeView_TextBlock_06}" />
                 </Grid>
             </UniformGrid>
         </Grid>
@@ -239,27 +240,27 @@
                 <TextBlock
                     Grid.Column="0"
                     FontSize="18"
-                    Text="时间" />
+                    Text="{x:Static lang:Resources.HomeView_TextBlock_07}" />
                 <TextBlock
                     Grid.Column="1"
                     FontSize="18"
-                    Text="客户端" />
+                    Text="{x:Static lang:Resources.HomeView_TextBlock_08}" />
                 <TextBlock
                     Grid.Column="2"
                     FontSize="18"
-                    Text="OPC UA 地址" />
+                    Text="{x:Static lang:Resources.HomeView_TextBlock_09}" />
                 <TextBlock
                     Grid.Column="3"
                     FontSize="18"
-                    Text="订阅节点总数" />
+                    Text="{x:Static lang:Resources.HomeView_TextBlock_10}" />
                 <TextBlock
                     Grid.Column="4"
                     FontSize="18"
-                    Text="发布地址" />
+                    Text="{x:Static lang:Resources.HomeView_TextBlock_11}" />
                 <TextBlock
                     Grid.Column="5"
                     FontSize="18"
-                    Text="状态" />
+                    Text="{x:Static lang:Resources.HomeView_TextBlock_12}" />
             </Grid>
             <ItemsControl
                 Margin="10,40,10,0"

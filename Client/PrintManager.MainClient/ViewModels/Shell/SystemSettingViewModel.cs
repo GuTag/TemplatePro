@@ -7,6 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using PrintManager.MainClient.Components;
+using PrintManager.Shared.Helpers;
+using System.Globalization;
+using System.Windows.Controls;
 
 namespace PrintManager.MainClient.ViewModels.Shell
 {
@@ -14,8 +17,8 @@ namespace PrintManager.MainClient.ViewModels.Shell
     {
         public SystemSettingViewModel()
         {
-
-            ReadConfig();
+            LanguageManager.Instance.ChangeLanguage(new CultureInfo("zh-CN"));
+            //ReadConfig();
         }
 
         #region 属性

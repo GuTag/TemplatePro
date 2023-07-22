@@ -10,6 +10,7 @@
     xmlns:pu="clr-namespace:Panuon.WPF.UI;assembly=Panuon.WPF.UI"
     xmlns:pucore="clr-namespace:Panuon.WPF;assembly=Panuon.WPF"
     xmlns:purs="clr-namespace:Panuon.WPF.UI.Resources;assembly=Panuon.WPF.UI"
+    xmlns:lang="clr-namespace:PrintManager.MainClient.Properties"
     Title="Smart数据采集系统"
     Width="1500"
     Height="850"
@@ -141,17 +142,17 @@
                             cm:Message.Attach="[Event SelectionChanged]=[Action OnMainMenuSelectionChanged]"
                             SelectedIndex="{Binding SelectedMainMenuIndex}"
                             Style="{DynamicResource MainMenuListBoxStyle}">
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe873;" Content="首页" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="离散量" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="模拟量" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="参数修改" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="时间程序" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe620;" Content="文本配置" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="后端配置"
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe873;" Content="{x:Static lang:Resources.ShellView_TextBlock_01}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="{x:Static lang:Resources.ShellView_TextBlock_02}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="{x:Static lang:Resources.ShellView_TextBlock_03}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="{x:Static lang:Resources.ShellView_TextBlock_04}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="{x:Static lang:Resources.ShellView_TextBlock_05}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe620;" Content="{x:Static lang:Resources.ShellView_TextBlock_06}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe65c;" Content="{x:Static lang:Resources.ShellView_TextBlock_07}"
                                          Visibility="{Binding IsLogin, Source={x:Static gobal:GlobalData.Instance}, Converter={StaticResource BooleanToVisibilityConverter}, UpdateSourceTrigger=PropertyChanged}" 
                                          />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe630;" Content="订阅日志" />
-                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe630;" Content="系统日志" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe630;" Content="{x:Static lang:Resources.ShellView_TextBlock_08}" />
+                            <ListBoxItem pu:ListBoxItemHelper.Icon="&#xe630;" Content="{x:Static lang:Resources.ShellView_TextBlock_09}" />
                         </ListBox>
                     </Grid>
                     <Grid Grid.Row="4" Background="Transparent" />
@@ -171,7 +172,7 @@
                                 <TextBlock
                                     Width="50"
                                     FontSize="17"
-                                    Text="IP:" />
+                                    Text="{x:Static lang:Resources.ShellView_TextBlock_10}" />
                                 <TextBlock FontSize="17" Text="{Binding ServerIP}" />
                             </StackPanel>
                         </Grid>
@@ -183,7 +184,7 @@
                                 <TextBlock
                                     Width="130"
                                     FontSize="17"
-                                    Text="数据库状态:" />
+                                    Text="{x:Static lang:Resources.ShellView_TextBlock_11}" />
                                 <Grid>
                                     <Ellipse
                                         Width="20"
@@ -205,7 +206,7 @@
                                 <TextBlock
                                     Width="130"
                                     FontSize="17"
-                                    Text="客户端状态:" />
+                                    Text="{x:Static lang:Resources.ShellView_TextBlock_12}" />
                                 <Grid>
                                     <Ellipse
                                         Width="20"
@@ -227,7 +228,7 @@
                                 <TextBlock
                                     Width="130"
                                     FontSize="17"
-                                    Text="OPC    订阅:" />
+                                    Text="{x:Static lang:Resources.ShellView_TextBlock_13}" />
                                 <Grid>
                                     <Ellipse
                                         Width="20"
@@ -249,7 +250,7 @@
                                 <TextBlock
                                     Width="130"
                                     FontSize="17"
-                                    Text="服务器状态:" />
+                                    Text="{x:Static lang:Resources.ShellView_TextBlock_14}" />
                                 <Grid>
                                     <Ellipse
                                         Width="20"

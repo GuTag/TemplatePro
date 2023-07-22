@@ -61,7 +61,1528 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to en.
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_13 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_14 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_15 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_16 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_17 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_18 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_18", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_19 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_19", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_20 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_20", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string AnalogView_TextBlock_21 {
+            get {
+                return ResourceManager.GetString("AnalogView_TextBlock_21", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Dialog_Comm_01 {
+            get {
+                return ResourceManager.GetString("Dialog_Comm_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Dialog_Comm_02 {
+            get {
+                return ResourceManager.GetString("Dialog_Comm_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Dialog_Comm_03 {
+            get {
+                return ResourceManager.GetString("Dialog_Comm_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string Dialog_Comm_04 {
+            get {
+                return ResourceManager.GetString("Dialog_Comm_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventHistoryLogView_TextBlock_13 {
+            get {
+                return ResourceManager.GetString("EventHistoryLogView_TextBlock_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string EventLogView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("EventLogView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HistoryLogView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("HistoryLogView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string HomeView_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("HomeView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LanguageView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("LanguageView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LoginView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("LoginView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LoginView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("LoginView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LoginView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("LoginView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LogView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("LogView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LogView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("LogView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LogView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("LogView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LogView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("LogView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string LogView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("LogView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PagePicker_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("PagePicker_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PagePicker_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("PagePicker_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PagePicker_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("PagePicker_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string PagePicker_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("PagePicker_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParModifyView_TextBlock_13 {
+            get {
+                return ResourceManager.GetString("ParModifyView_TextBlock_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp1View_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp1View_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_13 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_14 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_15 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_16 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp2View_TextBlock_17 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp2View_TextBlock_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp3View_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp3View_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp3View_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp3View_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp3View_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp3View_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp3View_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp3View_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp3View_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp3View_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp3View_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp3View_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp4View_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp4View_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp4View_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp4View_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp4View_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp4View_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ParUpdateTemp4View_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ParUpdateTemp4View_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_13 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_14 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_15 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_15", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_16 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_16", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ProductView_TextBlock_17 {
+            get {
+                return ResourceManager.GetString("ProductView_TextBlock_17", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_01", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_02 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_02", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_03 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_03", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_04 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_04", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_05 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_05", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_06 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_06", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_07 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_07", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_08 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_08", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_09 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_09", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_10 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_10", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_11 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_11", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_12 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_13 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_13", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string ShellView_TextBlock_14 {
+            get {
+                return ResourceManager.GetString("ShellView_TextBlock_14", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_Button_01 {
             get {
@@ -70,7 +1591,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to English.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_Button_02 {
             get {
@@ -79,7 +1600,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Reset to default.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_Button_03 {
             get {
@@ -88,7 +1609,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Save.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_Button_04 {
             get {
@@ -97,7 +1618,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Cancel!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_Button_05 {
             get {
@@ -106,7 +1627,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to System configuration.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_01 {
             get {
@@ -115,7 +1636,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Database connection string!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_02 {
             get {
@@ -124,7 +1645,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Native IP address!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_03 {
             get {
@@ -133,7 +1654,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Automatically connect to the database!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_04 {
             get {
@@ -142,7 +1663,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to ;  Configuration of client.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_05 {
             get {
@@ -151,7 +1672,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Client.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_06 {
             get {
@@ -160,7 +1681,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Client OPC Address!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_07 {
             get {
@@ -169,7 +1690,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Auto-connect clients!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_08 {
             get {
@@ -178,7 +1699,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Chart Configuration!.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_09 {
             get {
@@ -187,7 +1708,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Server Address.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_10 {
             get {
@@ -196,7 +1717,7 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Refresh Time.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_11 {
             get {
@@ -205,11 +1726,20 @@ namespace PrintManager.MainClient.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Switch Language.
+        ///   Looks up a localized string similar to .
         /// </summary>
         public static string SystemSettingView_TextBlock_12 {
             get {
                 return ResourceManager.GetString("SystemSettingView_TextBlock_12", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        public static string TimeProgramView_TextBlock_01 {
+            get {
+                return ResourceManager.GetString("TimeProgramView_TextBlock_01", resourceCulture);
             }
         }
     }
